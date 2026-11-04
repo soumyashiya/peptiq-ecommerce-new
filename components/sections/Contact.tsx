@@ -70,7 +70,7 @@ export function Contact() {
                   placeholder={contact.emailPlaceholder}
                   aria-label="Email address"
                   disabled={busy}
-                  className="h-[3.25rem] min-w-0 flex-1 rounded-full px-5 border border-line bg-paper px-4 text-[0.9375rem] text-ink outline-none transition-colors placeholder:text-muted focus:border-brand disabled:opacity-50"
+                  className="h-[3.25rem] min-w-0 flex-1 rounded-full px-5 border border-line bg-paper px-4 text-body text-ink outline-none transition-colors placeholder:text-muted focus:border-brand disabled:opacity-50"
                 />
                 <button
                   type="submit"
@@ -94,20 +94,20 @@ export function Contact() {
               />
 
               {state.kind === 'success' && (
-                <p role="status" className="mt-3 text-[0.8125rem] font-medium text-brand-teal">{state.message}</p>
+                <p role="status" className="mt-3 text-micro font-medium text-brand-teal">{state.message}</p>
               )}
               {state.kind === 'error' && (
-                <p role="alert" className="mt-3 text-[0.8125rem] font-medium text-brand">{state.message}</p>
+                <p role="alert" className="mt-3 text-micro font-medium text-brand">{state.message}</p>
               )}
             </form>
 
-            <p className="mt-6 text-[0.8125rem] text-muted">
+            <p className="mt-6 text-micro text-muted">
               {contact.direct}{' '}
               <a href={`mailto:${brand.email}`} className="font-semibold text-ink underline decoration-ink/30 underline-offset-4 hover:text-brand">
                 {brand.email}
               </a>
             </p>
-            <p className="mt-2 text-[0.75rem] font-normal text-muted">
+            <p className="mt-2 text-micro font-normal text-muted">
               For laboratory research use only. Not for human or veterinary consumption.
             </p>
           </Reveal>
@@ -115,7 +115,7 @@ export function Contact() {
           <div className="relative w-full self-end" style={{ height: 'clamp(22rem, 32vw, 27rem)' }}>
             <span
               aria-hidden
-              className="absolute inset-x-[10%] bottom-0 top-[18%] rounded-t-full bg-[radial-gradient(circle_at_50%_40%,rgba(168,120,250,0.35)_0%,rgba(210,191,252,0.2)_50%,rgba(210,191,252,0)_75%)]"
+              className="absolute inset-x-[10%] bottom-0 top-[18%] rounded-t-full bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.4)_0%,rgba(210,191,252,0.2)_50%,rgba(210,191,252,0)_75%)]"
             />
             <Image
               src={contact.image}

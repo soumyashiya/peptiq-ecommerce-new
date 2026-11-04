@@ -179,7 +179,7 @@ export function Header() {
                   aria-expanded={accountOpen}
                   className="flex h-10 w-10 items-center justify-center rounded-full outline-none transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-brand-sky/40"
                 >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-brand-sky to-brand text-[13px] font-semibold text-paper">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-brand-sky to-brand text-micro font-semibold text-paper">
                     {user.name.trim().charAt(0).toUpperCase() || 'P'}
                   </span>
                 </button>
@@ -196,12 +196,12 @@ export function Header() {
                     >
                       {/* Header */}
                       <div className="flex items-center gap-3 border-b border-line px-4 py-4">
-                        <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-brand-sky to-brand text-[14px] font-semibold text-paper">
+                        <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-brand-sky to-brand text-body font-semibold text-paper">
                           {user.name.trim().charAt(0).toUpperCase() || 'P'}
                         </span>
                         <div className="min-w-0">
-                          <p className="truncate text-[14px] font-medium text-ink">{user.name}</p>
-                          <p className="truncate text-[12px] text-muted">{user.email}</p>
+                          <p className="truncate text-body font-medium text-ink">{user.name}</p>
+                          <p className="truncate text-micro text-muted">{user.email}</p>
                         </div>
                       </div>
 
@@ -210,7 +210,7 @@ export function Header() {
                         type="button"
                         onClick={handleSignOut}
                         role="menuitem"
-                        className="flex w-full items-center gap-3 px-4 py-3 text-left text-[14px] text-ink transition-colors hover:bg-mist"
+                        className="flex w-full items-center gap-3 px-4 py-3 text-left text-body text-ink transition-colors hover:bg-mist"
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3" />
@@ -255,7 +255,7 @@ export function Header() {
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                  className="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-brand px-1 text-[11px] font-semibold tabular-nums text-paper"
+                  className="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-brand px-1 text-label font-semibold tabular-nums text-paper"
                 >
                   {count}
                 </motion.span>

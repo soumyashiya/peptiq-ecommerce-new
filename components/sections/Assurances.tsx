@@ -10,19 +10,9 @@ import { Reveal } from '@/components/ui/Reveal';
  * mirrored pair). Below `lg` the portrait moves above the cards and the cards
  * stack as a two-up grid.
  *
- * ── The band ──────────────────────────────────────────────────────────────
- * This section is built on `brand.soft` (#D2BFFC) rather than the pale page
- * wash. That saturated core is what the frosted panels need: translucent
- * white over #F1EBFC is nearly invisible, which is why these cards previously
- * had to be given a grey hairline to be seen at all. On a real band they read
- * as glass and need no outline but their own white highlight.
- *
- * It ramps from and back to the page colour at both ends rather than stopping
- * at full strength, so the band has soft edges and neither neighbour meets it
- * on a hard seam. If the page colour changes, change both end stops with it.
+ * Sits directly on the lavender page, which is the saturated surface the
+ * frosted panels need in order to read as glass.
  */
-const SECTION_GRADIENT =
-  'linear-gradient(180deg, #F1EBFC 0%, #DFCFFD 16%, #D2BFFC 46%, #D7C6FC 72%, #F1EBFC 100%)';
 
 const ICONS = [
   // Verified sourcing — shield with check
@@ -74,7 +64,7 @@ function Card({
           <Icon>{icon}</Icon>
         </span>
         <h3 className="mt-4 t-h3 text-ink">{item.title}</h3>
-        <p className="mt-2 text-[14px] font-normal leading-relaxed text-ink/65">{item.body}</p>
+        <p className="mt-2 text-micro font-medium leading-relaxed text-ink/65">{item.body}</p>
       </div>
     </Reveal>
   );
@@ -88,7 +78,6 @@ export function Assurances() {
     <section
       id="assurances"
       className="relative scroll-mt-28 overflow-hidden py-section-sm"
-      style={{ backgroundImage: SECTION_GRADIENT }}
     >
       <div className="frame">
         <div className="text-center">
@@ -124,7 +113,7 @@ export function Assurances() {
             {/* Soft lavender disc and a thin orbit line behind the portrait. */}
             <span
               aria-hidden
-              className="absolute left-[8%] top-[22%] h-[62%] w-[84%] rounded-full bg-[radial-gradient(circle,rgba(168,120,250,0.32)_0%,rgba(210,191,252,0.22)_50%,rgba(210,191,252,0)_72%)]"
+              className="absolute left-[8%] top-[22%] h-[62%] w-[84%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,rgba(210,191,252,0.22)_50%,rgba(210,191,252,0)_72%)]"
             />
             <span
               aria-hidden
@@ -164,7 +153,7 @@ export function Assurances() {
           <Link href={assurances.cta.href} className="btn-primary">
             {assurances.cta.label}
           </Link>
-          <p className="mt-5 text-[13px] font-normal text-ink/60">{assurances.note}</p>
+          <p className="mt-5 text-micro font-normal text-ink/70">{assurances.note}</p>
         </div>
       </div>
     </section>

@@ -88,10 +88,10 @@ function AabanpayCallback() {
     <CallbackCard status={status} title={c.title} body={c.body}>
       {orderId && (
         <div className="mt-6 rounded-[12px] bg-mist px-5 py-4 text-left">
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
+          <p className="text-label font-medium uppercase tracking-[0.1em] text-muted">
             Order reference
           </p>
-          <p className="mt-1 text-[14px] font-medium tabular-nums">{orderId}</p>
+          <p className="mt-1 text-body font-medium tabular-nums">{orderId}</p>
         </div>
       )}
 
@@ -99,7 +99,7 @@ function AabanpayCallback() {
         {orderId && status === 'success' && (
           <Link
             href={`/order/${orderId}`}
-            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-[13px] font-medium text-paper transition-colors hover:bg-brand"
+            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-micro font-medium text-paper transition-colors hover:bg-brand"
           >
             View order
           </Link>
@@ -107,14 +107,14 @@ function AabanpayCallback() {
         {status !== 'success' && (
           <Link
             href="/checkout"
-            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-[13px] font-medium text-paper transition-colors hover:bg-brand"
+            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-micro font-medium text-paper transition-colors hover:bg-brand"
           >
             Try again
           </Link>
         )}
         <Link
           href="/"
-          className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-[13px] font-medium text-ink transition-colors hover:border-ink/40"
+          className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-micro font-medium text-ink transition-colors hover:border-ink/40"
         >
           Back to home
         </Link>

@@ -25,13 +25,13 @@ export function NewArrivals() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Three cards only, under a centred heading, so it holds at three
+            tracks rather than taking `.product-grid`'s fourth — the cap is what
+            brings each card down to the ~350px the rest of the site sets. */}
+        <div className="product-grid mx-auto mt-14 max-w-[1130px] xl:grid-cols-3">
           {items.map((product, i) => (
             <Reveal key={product.slug} delay={i * 0.08}>
-              <ProductCard
-                product={product}
-                sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-              />
+              <ProductCard product={product} />
             </Reveal>
           ))}
         </div>

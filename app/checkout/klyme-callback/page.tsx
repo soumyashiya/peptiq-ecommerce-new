@@ -77,7 +77,7 @@ function KlymeCallback() {
         {orderId && status === 'success' && (
           <Link
             href={`/order/${orderId}`}
-            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-[13px] font-medium text-paper transition-colors hover:bg-brand"
+            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-micro font-medium text-paper transition-colors hover:bg-brand"
           >
             View order
           </Link>
@@ -85,14 +85,14 @@ function KlymeCallback() {
         {status !== 'success' && (
           <Link
             href="/checkout"
-            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-[13px] font-medium text-paper transition-colors hover:bg-brand"
+            className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-micro font-medium text-paper transition-colors hover:bg-brand"
           >
             Try again
           </Link>
         )}
         <Link
           href="/"
-          className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-[13px] font-medium text-ink transition-colors hover:border-ink/40"
+          className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-micro font-medium text-ink transition-colors hover:border-ink/40"
         >
           Back to home
         </Link>

@@ -61,11 +61,11 @@ export function MenuOverlay({ open, onClose, linkHref }: Props) {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   <path d="M6 6l12 12M18 6 6 18" />
                 </svg>
-                <span className="text-[12px] font-bold uppercase tracking-[0.2em]">{menu.closeLabel}</span>
+                <span className="text-micro font-bold uppercase tracking-[0.2em]">{menu.closeLabel}</span>
               </button>
             </div>
             <Link href="/" onClick={onClose} className="flex shrink-0 flex-col items-center leading-none" aria-label={brand.name}>
-              <span className="pl-[0.32em] text-[22px] font-medium uppercase tracking-[0.32em] md:text-[26px]">{brand.name}</span>
+              <span className="pl-[0.32em] text-price font-medium uppercase tracking-[0.32em] md:text-price">{brand.name}</span>
               <span className="mt-1.5 pl-[0.4em] text-[8px] font-semibold uppercase tracking-[0.4em] opacity-80 md:text-[9px]">
                 {brand.sub}
               </span>
@@ -90,7 +90,7 @@ export function MenuOverlay({ open, onClose, linkHref }: Props) {
                       onClick={onClose}
                       className="group flex items-baseline gap-4 py-3 md:gap-6 md:py-4"
                     >
-                      <span className="w-6 text-[12px] font-semibold text-brand md:text-[13px]">
+                      <span className="w-6 text-micro font-semibold text-brand md:text-micro">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span className="t-h1 transition-[color,transform] duration-500 ease-smooth group-hover:translate-x-2 group-hover:text-brand">
@@ -140,11 +140,11 @@ export function MenuOverlay({ open, onClose, linkHref }: Props) {
                     <Image src={featured.image} alt="" fill sizes="96px" className="object-cover" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
+                    <span className="block text-label font-bold uppercase tracking-[0.2em] text-brand">
                       {menu.featured.label}
                     </span>
-                    <span className="mt-1 block truncate text-[20px] font-semibold">{featured.name}</span>
-                    <span className="block text-[13px] text-muted">{menu.featured.meta}</span>
+                    <span className="mt-1 block truncate text-h3 font-semibold">{featured.name}</span>
+                    <span className="block text-micro text-muted">{menu.featured.meta}</span>
                   </span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="flex-none text-ink transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
                     <path d="M7 17 17 7M8 7h9v9" />

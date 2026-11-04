@@ -110,13 +110,13 @@ export default function OrderPage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/track-order"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-ink transition-colors hover:border-brand-teal hover:text-brand-teal"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3 text-micro font-medium uppercase tracking-[0.08em] text-ink transition-colors hover:border-brand-teal hover:text-brand-teal"
             >
               Track by ID
             </Link>
             <Link
               href="/#products"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3 text-micro font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
             >
               Browse products
             </Link>
@@ -175,11 +175,11 @@ export default function OrderPage() {
                 <h1 className="mt-1 t-h2 break-all sm:break-normal">
                   {orderNumber}
                 </h1>
-                <p className="mt-1 text-[13px] text-muted">Placed {formatDate(createdAt)}</p>
+                <p className="mt-1 text-micro text-muted">Placed {formatDate(createdAt)}</p>
               </div>
             </div>
             <div className="text-left sm:text-right">
-              <p className="text-[12px] uppercase tracking-[0.1em] text-muted">Order total</p>
+              <p className="text-micro uppercase tracking-[0.1em] text-muted">Order total</p>
               <p className="mt-1 t-h2 tabular-nums">
                 {usd(total)}
               </p>
@@ -199,7 +199,7 @@ export default function OrderPage() {
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Items */}
           <section className="rounded-[10px] bg-paper p-6 md:p-8 lg:col-span-7">
-            <h2 className="text-[13px] font-medium uppercase tracking-[0.1em] text-ink">
+            <h2 className="text-micro font-medium uppercase tracking-[0.1em] text-ink">
               Items ({totalQty})
             </h2>
             <ul className="mt-5 divide-y divide-line">
@@ -210,10 +210,10 @@ export default function OrderPage() {
                 return (
                   <li key={`${name}-${i}`} className="flex items-center justify-between gap-3 py-4">
                     <div className="min-w-0">
-                      <p className="text-[15px] font-medium leading-snug">{name}</p>
-                      <p className="mt-0.5 text-[13px] text-muted">Qty {qty}</p>
+                      <p className="text-body font-medium leading-snug">{name}</p>
+                      <p className="mt-0.5 text-micro text-muted">Qty {qty}</p>
                     </div>
-                    <span className="flex-none text-[15px] tabular-nums">
+                    <span className="flex-none text-body tabular-nums">
                       {usd(price * qty)}
                     </span>
                   </li>
@@ -221,7 +221,7 @@ export default function OrderPage() {
               })}
             </ul>
 
-            <div className="mt-6 space-y-2 border-t border-line pt-6 text-[14px]">
+            <div className="mt-6 space-y-2 border-t border-line pt-6 text-body">
               <div className="flex justify-between">
                 <span className="text-muted">Subtotal</span>
                 <span className="tabular-nums">{usd(subtotal)}</span>
@@ -238,7 +238,7 @@ export default function OrderPage() {
                   <span className="tabular-nums">{usd(shipping)}</span>
                 </div>
               )}
-              <div className="flex justify-between border-t border-line pt-3 text-[18px] font-medium">
+              <div className="flex justify-between border-t border-line pt-3 text-h3 font-medium">
                 <span>Total</span>
                 <span className="tabular-nums">{usd(total)}</span>
               </div>
@@ -249,10 +249,10 @@ export default function OrderPage() {
           <div className="space-y-6 lg:col-span-5">
             {(customerName || shipAddress) && (
               <section className="rounded-[10px] bg-paper p-6 md:p-8">
-                <h2 className="text-[13px] font-medium uppercase tracking-[0.1em] text-ink">
+                <h2 className="text-micro font-medium uppercase tracking-[0.1em] text-ink">
                   Contact address
                 </h2>
-                <address className="mt-4 not-italic text-[15px] leading-relaxed text-ink">
+                <address className="mt-4 not-italic text-body leading-relaxed text-ink">
                   {customerName && <span className="block font-medium">{customerName}</span>}
                   {shipAddress && <span className="mt-1 block">{shipAddress}</span>}
                   {(shipCity || shipPostcode) && (
@@ -266,16 +266,16 @@ export default function OrderPage() {
             )}
 
             <section className="rounded-[10px] bg-paper p-6 md:p-8">
-              <h2 className="text-[13px] font-medium uppercase tracking-[0.1em] text-ink">Status</h2>
+              <h2 className="text-micro font-medium uppercase tracking-[0.1em] text-ink">Status</h2>
               <p
-                className={`mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[12px] font-medium uppercase tracking-[0.08em] ${
+                className={`mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-micro font-medium uppercase tracking-[0.08em] ${
                   statusStyles[status] ?? 'bg-brand-sky/10 text-brand-sky'
                 }`}
               >
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
                 {status}
               </p>
-              <p className="mt-4 text-[13px] text-muted">
+              <p className="mt-4 text-micro text-muted">
                 Our research team will follow up with next steps for your order.
               </p>
             </section>
@@ -285,13 +285,13 @@ export default function OrderPage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/#products"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-micro font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
           >
             Continue browsing →
           </Link>
           <Link
             href="/track-order"
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-8 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-ink transition-colors hover:border-brand-teal hover:text-brand-teal"
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-8 py-3 text-micro font-medium uppercase tracking-[0.08em] text-ink transition-colors hover:border-brand-teal hover:text-brand-teal"
           >
             Track another order
           </Link>
@@ -303,10 +303,10 @@ export default function OrderPage() {
           aria-label="Research-use disclaimer"
           className="mx-auto mt-10 max-w-3xl rounded-[10px] bg-paper p-6 text-center"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-brand-teal">
+          <p className="text-label font-medium uppercase tracking-[0.12em] text-brand-teal">
             Research-use notice
           </p>
-          <p className="mt-3 text-[13px] leading-relaxed text-muted">
+          <p className="mt-3 text-micro leading-relaxed text-muted">
             {compliance.checkoutAcknowledgement} {compliance.checkoutMedical}
           </p>
         </aside>

@@ -87,7 +87,7 @@ export function Hero() {
         className="frame absolute inset-x-0 bottom-12 md:bottom-20"
       >
        <div className="hero-content">
-        <span className="inline-flex items-center gap-2 rounded-full bg-brand-lime px-5 py-[7px] text-[11px] font-semibold uppercase tracking-[0.06em] text-ink md:text-[12px]">
+        <span className="inline-flex items-center gap-2 rounded-full bg-brand-lime px-5 py-[7px] text-label font-semibold uppercase tracking-[0.06em] text-ink md:text-micro">
           <span aria-hidden className="text-brand">✦</span>
           {hero.footerLeft} · {hero.footerRight}
         </span>
@@ -106,24 +106,36 @@ export function Hero() {
           {hero.kicker}
         </p>
 
+        {/*
+          These two were a hand-copied duplicate of `.btn-primary` /
+          `.btn-secondary`, and the duplicate is exactly what went stale: the
+          shared classes moved to the `btn` token while the hero kept a literal
+          13→14px pair, so the hero CTA and every section CTA stopped being the
+          same object. They now use the shared classes, which is the only way
+          that stays true through a scale change.
+
+          The secondary overrides colour only, because it sits on a photograph
+          and the default ink border would disappear into it. Those overrides
+          are utilities, emitted after the components layer, so they win at
+          equal specificity.
+        */}
         <div className="mt-8 flex flex-wrap items-center gap-3 md:mt-10 md:gap-4">
-          <Link
-            href={hero.primaryCta.href}
-            className="hero-button inline-flex min-w-[15rem] items-center justify-center gap-2.5 rounded-full border-[1.5px] border-ink bg-brand-lime px-9 py-[15px] text-[13px] font-semibold uppercase tracking-[0.06em] text-ink transition-colors duration-300 hover:bg-paper md:text-[14px]"
-          >
+          <Link href={hero.primaryCta.href} className="btn-primary group min-w-[15rem]">
             {hero.primaryCta.label}
-            <span aria-hidden>→</span>
+            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </Link>
           <Link
             href={hero.secondaryCta.href}
-            className="hero-button inline-flex items-center justify-center rounded-full border-[1.5px] border-paper/40 px-9 py-[15px] text-[13px] font-semibold uppercase tracking-[0.06em] text-paper transition-colors duration-300 hover:border-paper hover:bg-paper hover:text-ink md:text-[14px]"
+            className="btn-secondary border-paper/40 text-paper hover:border-paper hover:bg-paper hover:text-ink"
           >
             {hero.secondaryCta.label}
           </Link>
         </div>
 
         <ul
-          className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] font-semibold text-paper md:mt-14 md:text-[13px]"
+          className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-micro font-semibold text-paper md:mt-14 md:text-micro"
         >
           {stats.items.slice(0, 3).map((s, i) => (
             <li key={s.caption} className="flex items-center gap-3">

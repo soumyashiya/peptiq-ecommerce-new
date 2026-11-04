@@ -45,7 +45,7 @@ export function Products() {
                     sizes="(max-width:640px) 100vw, 50vw"
                     className="object-cover"
                   />
-                  <span className="absolute left-5 top-5 text-[12px] font-medium tracking-[0.1em] text-paper/90">
+                  <span className="absolute left-5 top-5 text-micro font-medium tracking-[0.1em] text-paper/90">
                     0{i + 1}
                   </span>
                 </div>
@@ -70,7 +70,7 @@ export function Products() {
             <button
               type="button"
               onClick={() => setShowAll(true)}
-              className="group inline-flex items-center gap-3 rounded-full border border-ink/15 px-8 py-4 text-[14px] font-medium uppercase tracking-[0.08em] transition-colors hover:border-brand-teal hover:text-brand-teal"
+              className="group inline-flex items-center gap-3 rounded-full border border-ink/15 px-8 py-4 text-body font-medium uppercase tracking-[0.08em] transition-colors hover:border-brand-teal hover:text-brand-teal"
             >
               {p.cta.label}
               <span className="transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden>

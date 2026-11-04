@@ -1,71 +1,81 @@
 import Image from 'next/image';
 import { story } from '@/lib/content';
-import { Reveal, RevealItem } from '@/components/ui/Reveal';
+import { Reveal } from '@/components/ui/Reveal';
+
+function Stat({ fact, className }: { fact: (typeof story.facts)[number]; className: string }) {
+  return (
+    <Reveal className={`glass absolute z-10 flex h-[7.25rem] w-44 flex-col justify-center bg-paper/85 px-4 ${className}`}>
+      <p className="figures text-[clamp(1.375rem,2vw,1.875rem)] font-medium leading-none text-ink">{fact.value}</p>
+      <p className="mt-1.5 text-micro font-medium leading-snug text-muted">{fact.label}</p>
+    </Reveal>
+  );
+}
+
+function Panel({ panel, sizes, className }: { panel: (typeof story.bannerPanels)[number]; sizes: string; className: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-[18px] ${className}`}>
+      <Image
+        src={story.bannerImage}
+        alt={panel.alt}
+        fill
+        sizes={sizes}
+        style={{ objectPosition: panel.position }}
+        className="object-cover"
+      />
+    </div>
+  );
+}
 
 /**
- * About — a full-bleed editorial banner. The photo (`story.bannerImage`, its
- * subject in the upper half) fills the top of the band and dissolves into the
- * page lavender toward the bottom; the copy is centred over that fade:
- * eyebrow, the two-line heading (second line in purple), the founding
- * paragraph, then a frosted row of the three figures and the CTA.
+ * About — the heading across the top left, then a photo, the founding paragraph
+ * with its CTA, and a taller photo that rises to the top of the section. The photos
+ * are the two halves of the client's banner, one model each, and `story.facts` sit
+ * on them as floating cards. Phones stack it in reading order.
+ *
+ * `object-cover` scales these crops by height, so the image renders far wider than
+ * its box: `sizes` has to allow for that, or the browser picks a blurry file.
  *
  * The figures are `story.facts` — keep them to numbers the business can back.
  */
 export function Story() {
-  return (
-    <section id="story" className="relative scroll-mt-28 overflow-hidden">
-      {/* Photo, faded into the page colour at its top edge and from the middle down. */}
-      <div className="absolute inset-x-0 top-0 h-[70%] min-h-[420px] md:h-[78%]">
-        <Image
-          src={story.bannerImage}
-          alt={story.bannerAlt}
-          fill
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <span
-          aria-hidden
-          // Page colour at both ends: fades in from the section above, out into the copy below.
-          className="absolute inset-0 bg-[linear-gradient(180deg,#F1EBFC_0%,rgba(241,235,252,0.55)_10%,rgba(241,235,252,0)_24%,rgba(241,235,252,0.15)_40%,rgba(241,235,252,0.85)_72%,#F1EBFC_100%)]"
-        />
-      </div>
+  const [formulations, units, purity] = story.facts;
+  const [first, second] = story.bannerPanels;
 
-      <div className="frame relative pb-section-sm pt-[clamp(15rem,32vw,26rem)] text-center md:pb-section">
-        <Reveal>
+  return (
+    <section id="story" className="relative scroll-mt-28 py-section-sm">
+      <div className="frame grid gap-y-12 lg:grid-cols-[1fr_1fr_1.1fr] lg:gap-x-10">
+        <Reveal className="lg:col-span-2">
           <span className="pill-eyebrow">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
             {story.eyebrow}
           </span>
-          <h2 className="t-h1 mx-auto mt-6 max-w-[18ch] uppercase leading-[0.98] tracking-tight text-ink">
+          <h2 className="t-h1 mt-6 text-ink">
             {story.headlineA}
             <br />
             <span className="text-brand">{story.headlineB}</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-[40rem] text-body text-ink/70">{story.founding}</p>
         </Reveal>
 
-        <Reveal
-          stagger={0.08}
-          className="mx-auto mt-10 grid max-w-[46rem] grid-cols-3 divide-x divide-line rounded-[1.25rem] border border-paper/70 bg-paper/55 py-6 backdrop-blur-md"
-        >
-          {story.facts.map((f) => (
-            <RevealItem key={f.label} className="px-3">
-              <p className="figures text-[clamp(1.5rem,3vw,2.25rem)] font-medium leading-none text-ink">{f.value}</p>
-              <p className="mt-2.5 text-[0.6875rem] font-semibold uppercase leading-snug tracking-[0.12em] text-muted">
-                {f.label}
-              </p>
-            </RevealItem>
-          ))}
-        </Reveal>
+        <div className="relative">
+          <Panel panel={first} sizes="(min-width: 1024px) 75vw, 250vw" className="aspect-[4/5]" />
+          <Stat fact={formulations} className="-top-5 left-4" />
+        </div>
 
-        <Reveal delay={0.15} className="mt-9">
-          <a href={story.cta.href} className="btn-primary group">
+        <Reveal className="lg:self-center">
+          <p className="text-body font-medium text-ink/80 xl:text-lead">{story.founding}</p>
+          <a href={story.cta.href} className="btn-primary group mt-8">
             {story.cta.label}
             <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
               →
             </span>
           </a>
         </Reveal>
+
+        <div className="relative lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:self-end">
+          <Panel panel={second} sizes="(min-width: 1024px) 90vw, 300vw" className="aspect-[2/3]" />
+          <Stat fact={units} className="-top-8 left-4 lg:-left-6 lg:-top-10" />
+          <Stat fact={purity} className="-bottom-5 right-4 lg:-bottom-6 lg:right-6" />
+        </div>
       </div>
     </section>
   );

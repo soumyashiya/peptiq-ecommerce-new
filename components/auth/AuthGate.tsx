@@ -11,6 +11,7 @@ import { useAuth } from './AuthProvider';
  */
 const PUBLIC_EXACT = [
   '/',
+  '/about',
   '/shop',
   '/login',
   '/register',
@@ -61,7 +62,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
       <div className="fixed inset-0 grid place-items-center bg-paper">
         <div className="flex flex-col items-center gap-4">
           <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-brand-sky" />
-          <span className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">
+          <span className="text-micro font-medium uppercase tracking-[0.14em] text-muted">
             Loading
           </span>
         </div>

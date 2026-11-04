@@ -37,10 +37,30 @@ export const compliance = {
     'These products are not intended to diagnose, treat, cure, or prevent any disease.',
 };
 
+/**
+ * The notice shown on arriving at the homepage (PartnerModal.tsx).
+ *
+ * ⚠️ "Authorised" and "genuine" are factual claims about the Alluvi relationship:
+ * keep them only while the partnership paperwork backs them.
+ */
+export const partnerModal = {
+  eyebrow: 'Official partner',
+  logo: 'ALLUVI',
+  logoSub: 'Healthcare',
+  title: 'Authorised reseller of Alluvi research products.',
+  body: 'Every pen on this site is a genuine Alluvi Healthcare kit, supplied through our authorised partnership, batch-verified by Janoshik Analytical and shipped sealed and cold.',
+  tags: ['Genuine Alluvi batches', 'Janoshik verified'],
+  shopCta: { label: 'Shop the range', href: '/shop' },
+  verifyCta: { label: 'Verify a batch', href: '#process' },
+  image: '/images/partner-modal.jpg',
+  imageAlt: 'A BPC-157 and TB-500 carton and pen from Alluvi Healthcare on dark slate',
+  imagePosition: '30% 50%',
+};
+
 export const nav = {
   links: [
     { label: 'Home', href: '#top' },
-    { label: 'About', href: '#story' },
+    { label: 'About', href: '/about' },
     { label: 'Products', href: '#products' },
     { label: 'Why Us', href: '#assurances' },
     { label: 'Testimonial', href: '#news' },
@@ -66,6 +86,40 @@ export const hero = {
   // Subject sits right-of-centre, leaving the left third open for the copy
   // stack — Hero.tsx pins the crop with `object-[70%_center]` to keep it there.
   image: '/images/hero1.jpg',
+};
+
+/**
+ * Pill badge strip between the hero and the spotlight (TrustStrip.tsx).
+ *
+ * Badges only — the section deliberately has no heading. It previously carried
+ * a brand-stamp label and a one-line note above the row; both were dropped, so
+ * there is nothing here but `items`. The section's accessible name is set on
+ * the element in TrustStrip.tsx, not from this file.
+ */
+export const trustStrip = {
+  items: [
+    {
+      icon: 'shield',
+      label: 'Verified sourcing',
+      body: 'Direct contracts with certified manufacturers. No grey-market resellers in the chain.',
+    },
+    {
+      icon: 'flask',
+      label: 'Lab-tested purity',
+      body: 'Every batch independently assayed by Janoshik Analytical before it is listed.',
+    },
+    {
+      icon: 'snow',
+      label: 'Sealed cold packaging',
+      body: 'Cold-stored, tamper-sealed and labelled accurately before it leaves the shelf.',
+    },
+    {
+      icon: 'chat',
+      // ⚠️ Confirm a WhatsApp support line actually exists before publishing.
+      label: 'A human on WhatsApp',
+      body: 'Real replies from a real person, usually within minutes on working days.',
+    },
+  ],
 };
 
 export const story = {
@@ -97,11 +151,122 @@ export const story = {
   // AI-generated (Magnific): gloved hands racking unbranded pens in a 4°C lab fridge.
   photo: '/images/about-cold-storage.jpg',
   photoAlt: 'Gloved hands placing a research pen into a refrigerated rack',
-  // AI-generated (Magnific): unbranded pens in an open case on lavender; subject in the top half.
-  bannerImage: '/images/about-banner.jpg',
-  bannerAlt: 'Unbranded research pens in an open sample case beside lab vials',
+  /*
+   * Client-supplied banner. Two people seated behind two cartons, pens laid in
+   * front, on a lavender set — faces in the upper half, product across the
+   * lower half. Story.tsx's fade was moved down to suit it: the old shot put
+   * its subject in the top half and had nothing below worth keeping clear.
+   *
+   * ⚠️ Carries **ALLUVI Healthcare** branding, not Peptiq, and the cartons
+   * print "For subcutaneous injection only", "Single patient use", "Read
+   * package leaflet before use", plus "SKIN · HAIR · CELLULAR REPAIR" and
+   * "Focus · Brain Cellular Repair & Anti-Aging". Those are human-use and
+   * therapeutic claims, and they sit directly against the research-use-only
+   * positioning this site is built on — including `story.founding` three lines
+   * above, which ends "supplied strictly for laboratory research use".
+   * Flagged, not swapped: the client chose the image.
+   *
+   * Source is a 1.4 MB PNG of a photograph. next/image re-encodes it, but a
+   * JPEG or WebP original would cut the build input substantially.
+   */
+  bannerImage: '/images/about-banner-new.png',
+  /** Story.tsx shows the banner as two panels, one model each; `position` is the crop. */
+  bannerPanels: [
+    {
+      position: '7% 50%',
+      alt: 'A person seated behind a GHK-Cu carton, with its pre-filled pen laid out in front on a lavender set',
+    },
+    {
+      position: '82% 50%',
+      alt: 'A person seated behind a NAD+ carton, with its pre-filled pen laid out in front on a lavender set',
+    },
+  ],
+  bannerAlt:
+    'Two people seated behind GHK-Cu and NAD+ cartons, with their pre-filled pens laid out in front on a lavender set',
   noteLabel: 'Janoshik verified',
   noteText: 'Every batch assayed before it is listed.',
+};
+
+/**
+ * "The Peptiq standard" — the brand band between the story and the assurance
+ * grid (PeptiqStandard.tsx).
+ *
+ * `points` are the batch's three stages in order, each with its photo and the
+ * product shown on it. The Sealed photo is the page's one shot of real Peptiq
+ * packaging.
+ */
+export const peptiqStandard = {
+  label: 'How every batch ships',
+  /** One entry per visual line. */
+  headlineA: 'Nothing ships',
+  headlineB: 'on trust.',
+  body:
+    'One standard runs across every Peptiq line: an independent assay before a batch is listed, a sealed fixed-volume pen, cold-chain dispatch, and the batch-specific certificate in the box. The paperwork is not an extra — it is the product.',
+  cta: { label: 'See the quality protocol', href: '#process' },
+  shopCta: { label: 'Shop all lines', href: '/shop' },
+  addLabel: 'Add to cart',
+  addedLabel: 'Added',
+  points: [
+    {
+      title: 'Assayed before listed',
+      body: 'Every batch goes to Janoshik Analytical for independent purity and concentration checks before it is offered for sale.',
+      image: '/images/featured-review-lab.jpg',
+      alt: 'Researcher inspecting a sealed research pen at the laboratory bench',
+      position: '60% 30%',
+      productSlug: 'mots-c-40mg',
+    },
+    {
+      title: 'Sealed, fixed volume',
+      body: 'Supplied in pre-filled research pens — nothing to reconstitute, measure or transfer at the bench.',
+      image: '/images/supply-still-life.jpg',
+      alt: 'Peptiq cartons stacked beside a pre-filled research pen and a lavender pouch',
+      position: '85% 40%',
+      productSlug: 'tesamorelin-20mg',
+    },
+    {
+      title: 'Documented on dispatch',
+      body: 'The batch-specific certificate of analysis ships in the box, and its reference matches the number printed on the pen.',
+      image: '/images/about-banner.jpg',
+      alt: 'A gloved hand lifting a research pen from an open case, beside lab vials',
+      position: '42% 30%',
+      productSlug: 'retatrutide-40mg',
+    },
+  ],
+};
+
+/**
+ * The /about page (app/about/page.tsx). The story reuses the homepage's copy, so
+ * the two can't drift. It speaks as the company: the people in the banner are from
+ * the client's image, so nothing here presents them as founders or staff.
+ */
+export const aboutPage = {
+  metaTitle: 'About',
+  metaDescription: 'Why Peptiq exists, and the standard every research batch is held to before it ships.',
+  banner: {
+    image: story.bannerImage,
+    alt: story.bannerAlt,
+  },
+  title: 'The standard behind Peptiq',
+  quote: '"We started Peptiq because the research peptide market needed a supplier willing to be boring about the basics."',
+  photo: {
+    image: '/images/featured-review-lab.jpg',
+    alt: 'Researcher inspecting a sealed research pen at the laboratory bench',
+    position: '60% 30%',
+  },
+  eyebrow: 'Why we started',
+  heading: 'A research supplier should be able to show its paperwork.',
+  paragraphs: [
+    'Transparent sourcing, third-party lab testing, and people you can actually message. Every batch is checked before it reaches our shelves, and every product is supplied strictly for laboratory research use.',
+    ...story.body,
+    peptiqStandard.body,
+  ],
+  statement: `${story.headlineA} ${story.headlineB}`,
+  closingPhoto: {
+    image: '/images/supply-still-life.jpg',
+    alt: 'Peptiq cartons stacked beside a pre-filled research pen and a lavender pouch',
+    position: '85% 40%',
+  },
+  cta: { label: 'Shop all lines', href: '/shop' },
 };
 
 export const stats = {
@@ -720,7 +885,7 @@ export const supply = {
   /** Homepage banner copy (SupplyProgramme). */
   bannerTitle: 'Subscribe & save on your research supply',
   tagline: 'Because consistent research starts with a consistent supply.',
-  // AI-generated still life (Magnific): Peptiq cartons and pens, product on the right.
+  // Still life with ALLUVI-branded cartons and pens, product on the right.
   // Product sits on the right of the frame; the folder name contains a space.
   image: '/new%20images/sub.png',
   body: 'Your bench supply, delivered with each verified batch. Choose any line, receive it monthly for three deliveries, and save 15% on every one — with complimentary cold-chain shipping on everything else in your order.',
@@ -935,7 +1100,7 @@ export const philosophy = {
     'Peptiq is about research you can trust — independently tested compounds, sealed pre-filled pens, and documentation that ships with every order.',
     'We believe research supply should support the work, not complicate it — pairing rigorous third-party testing with a clean, traceable format.',
   ],
-  cta: { label: 'More about Peptiq', href: '#story' },
+  cta: { label: 'More about Peptiq', href: '/about' },
   // Transparent cut-out; the folder name contains a space, so it is URL-encoded.
   image: '/new%20images/tessa-without%20bg.png',
   imageAlt: 'Tesamorelin 20mg carton and research pen',
@@ -1104,7 +1269,7 @@ export const footer = {
       title: 'Company',
       links: [
         { label: 'Shop', href: '/shop' },
-        { label: 'About', href: '/#story' },
+        { label: 'About', href: '/about' },
         { label: 'Why Peptiq', href: '/#assurances' },
         { label: 'Quality protocol', href: '/#process' },
         { label: 'Testimonials', href: '/#news' },

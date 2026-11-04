@@ -46,10 +46,17 @@ const CATEGORY_LABEL = Object.fromEntries(
   shopControls.categories.map((c) => [c.value, c.label]),
 ) as Record<ProductCategory, string>;
 
+/**
+ * Default `sizes`, matching `.product-grid`'s track count at each breakpoint
+ * (1 / 2 / 3 / 4 up). Grid call sites can leave `sizes` off entirely; only the
+ * scroll rails, whose cards are a fixed `vw` wide, need to pass their own.
+ */
+const GRID_SIZES = '(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw';
+
 export function ProductCard({
   product,
   priority = false,
-  sizes = '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw',
+  sizes = GRID_SIZES,
   variant = 'default',
 }: {
   product: Product;
@@ -115,17 +122,20 @@ export function ProductCard({
           <button
             type="button"
             onClick={quickAdd}
-            className="absolute inset-x-3 bottom-3 translate-y-[calc(100%+0.75rem)] rounded-md bg-ink py-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-paper opacity-0 transition-all duration-500 ease-smooth hover:bg-brand focus-visible:translate-y-0 focus-visible:opacity-100 focus-visible:outline-none group-hover:translate-y-0 group-hover:opacity-100 max-md:translate-y-0 max-md:opacity-100"
+            className="absolute inset-x-3 bottom-3 translate-y-[calc(100%+0.75rem)] rounded-md bg-ink py-3 text-micro font-semibold uppercase tracking-[0.12em] text-paper opacity-0 transition-all duration-500 ease-smooth hover:bg-ink/80 focus-visible:translate-y-0 focus-visible:opacity-100 focus-visible:outline-none group-hover:translate-y-0 group-hover:opacity-100 max-md:translate-y-0 max-md:opacity-100"
           >
             {added ? 'Added' : 'Add to cart'}
           </button>
         </div>
-        <h3 className="mt-4 text-[1.05rem] font-extrabold uppercase leading-tight tracking-[0.02em] text-ink">
+        {/* Product title on the `h3` token (20→26px) — the brief's 20–28px
+            product-title band. The price line under it stays on body, because
+            on this compact card it is secondary meta, not the headline price. */}
+        <h3 className="mt-4 text-h3 font-extrabold uppercase leading-tight tracking-[0.02em] text-ink">
           <Link href={href} className="transition-colors hover:text-brand">
             {product.name}
           </Link>
         </h3>
-        <p className="figures mt-1.5 text-[13px] text-muted">{formatPrice(product.price)} USD</p>
+        <p className="figures mt-1.5 text-body text-muted">{formatPrice(product.price)} USD</p>
       </article>
     );
   }
@@ -150,7 +160,7 @@ export function ProductCard({
             the badge sits on the photograph regardless. */}
         {product.badge && (
           <span
-            className="pointer-events-none absolute left-3 top-3 rounded-[2px] bg-paper px-2.5 py-1 text-[0.625rem] font-medium uppercase tracking-[0.16em]"
+            className="pointer-events-none absolute left-3 top-3 rounded-[2px] bg-paper px-2.5 py-1 text-label font-medium uppercase tracking-[0.16em]"
             style={{ color: 'var(--pc-ink)' }}
           >
             {product.badge}

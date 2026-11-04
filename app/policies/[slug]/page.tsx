@@ -33,7 +33,7 @@ export default function PolicyPage({ params }: Params) {
     <main className="pt-28 md:pt-32">
       <div className="frame pb-section-sm md:pb-section">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-micro text-muted">
           <Link href="/" className="transition-colors hover:text-brand-teal">
             Home
           </Link>
@@ -48,7 +48,7 @@ export default function PolicyPage({ params }: Params) {
           </p>
           <h1 className="mt-4 t-h1">{policy.title}</h1>
           <p className="mt-4 t-lead text-muted">{policy.summary}</p>
-          <p className="mt-4 text-[13px] uppercase tracking-[0.08em] text-muted">
+          <p className="mt-4 text-micro uppercase tracking-[0.08em] text-muted">
             Last updated {policy.updated}
           </p>
         </header>
@@ -68,7 +68,7 @@ export default function PolicyPage({ params }: Params) {
         </div>
 
         {/* Research-use disclaimer */}
-        <p className="mt-12 max-w-prose text-[13px] leading-relaxed text-muted/80">
+        <p className="mt-12 max-w-prose text-micro leading-relaxed text-muted/80">
           All {brand.name} products are supplied for laboratory research and development use only.
           Not for human or veterinary consumption. Questions? Email{' '}
           <a

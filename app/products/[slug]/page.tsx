@@ -118,7 +118,7 @@ export default function ProductPage({ params }: Params) {
       )}
       <div className="frame pb-section-sm md:pb-section">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-[13px] text-muted">
+        <nav className="flex items-center gap-2 text-micro text-muted">
           <Link href="/" className="transition-colors hover:text-brand-teal">
             Home
           </Link>
@@ -147,7 +147,7 @@ export default function ProductPage({ params }: Params) {
               checking, and setting it in the mono face matches the product card
               so the two surfaces agree.
             */}
-            <p className="flex flex-wrap items-baseline gap-x-2.5 text-[0.8125rem]">
+            <p className="flex flex-wrap items-baseline gap-x-2.5 text-micro">
               <span className="figures font-semibold text-brand-teal">{product.strength}</span>
               <span className="font-normal text-muted">{product.tagline}</span>
             </p>
@@ -156,11 +156,11 @@ export default function ProductPage({ params }: Params) {
 
             {/* Price */}
             <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="figures text-[2.25rem] font-semibold leading-none text-brand">
+              <span className="figures text-h2-sm font-semibold leading-none text-brand">
                 {usd(product.price)}
               </span>
-              <span className="text-[0.8125rem] uppercase tracking-[0.08em] text-muted">USD</span>
-              <span className="w-full text-[0.8125rem] font-normal text-muted">
+              <span className="text-micro uppercase tracking-[0.08em] text-muted">USD</span>
+              <span className="w-full text-micro font-normal text-muted">
                 Save{' '}
                 <span className="figures font-medium text-brand-teal">
                   {usd(supplyPricing(product.price).saving)}
@@ -176,7 +176,7 @@ export default function ProductPage({ params }: Params) {
             <div
               role="note"
               aria-label="Research-use disclaimer"
-              className="mt-5 max-w-prose rounded-[6px] border-l-2 border-brand-teal/70 bg-brand-teal/[0.05] px-4 py-3 text-[13px] leading-relaxed text-muted"
+              className="mt-5 max-w-prose rounded-[6px] border-l-2 border-brand-teal/70 bg-brand-teal/[0.05] px-4 py-3 text-micro leading-relaxed text-muted"
             >
               <span className="font-medium uppercase tracking-[0.06em] text-ink">
                 For research purposes only.
@@ -190,7 +190,7 @@ export default function ProductPage({ params }: Params) {
                 href={product.labTestUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-[6px] border border-brand-teal/40 bg-brand-teal/[0.06] px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.08em] text-brand-teal transition-colors hover:bg-brand-teal/[0.12]"
+                className="mt-6 inline-flex items-center gap-2 rounded-[6px] border border-brand-teal/40 bg-brand-teal/[0.06] px-4 py-2.5 text-micro font-medium uppercase tracking-[0.08em] text-brand-teal transition-colors hover:bg-brand-teal/[0.12]"
               >
                 <svg
                   width="16"
@@ -237,10 +237,10 @@ export default function ProductPage({ params }: Params) {
                     </svg>
                   </span>
                   <div>
-                    <h2 className="text-[15px] font-medium text-ink">
+                    <h2 className="text-body font-medium text-ink">
                       Janoshik Third-Party Lab Analysis
                     </h2>
-                    <p className="mt-1 text-[13px] text-muted">
+                    <p className="mt-1 text-micro text-muted">
                       Independently tested and verified by Janoshik Analytical.
                     </p>
                   </div>
@@ -249,27 +249,27 @@ export default function ProductPage({ params }: Params) {
                 {/* Batch meta */}
                 <dl className="mt-5 grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-3">
                   <div className="bg-paper px-4 py-3">
-                    <dt className="text-[10px] uppercase tracking-[0.1em] text-muted">
+                    <dt className="text-label uppercase tracking-[0.1em] text-muted">
                       Batch number
                     </dt>
-                    <dd className="mt-1 text-[14px] font-medium text-ink">
+                    <dd className="mt-1 text-body font-medium text-ink">
                       {product.janoshik.batchNumber}
                     </dd>
                   </div>
                   <div className="bg-paper px-4 py-3">
-                    <dt className="text-[10px] uppercase tracking-[0.1em] text-muted">
+                    <dt className="text-label uppercase tracking-[0.1em] text-muted">
                       Fill volume
                     </dt>
-                    <dd className="mt-1 text-[14px] font-medium text-ink">
+                    <dd className="mt-1 text-body font-medium text-ink">
                       {product.janoshik.fillVolume}
                     </dd>
                   </div>
                   {product.janoshik.purity && (
                     <div className="bg-paper px-4 py-3">
-                      <dt className="text-[10px] uppercase tracking-[0.1em] text-muted">
+                      <dt className="text-label uppercase tracking-[0.1em] text-muted">
                         Purity
                       </dt>
-                      <dd className="mt-1 text-[14px] font-medium text-brand-teal">
+                      <dd className="mt-1 text-body font-medium text-brand-teal">
                         {product.janoshik.purity}
                       </dd>
                     </div>
@@ -278,8 +278,8 @@ export default function ProductPage({ params }: Params) {
 
                 {/* Compounds table */}
                 <div className="mt-5 overflow-hidden rounded-[6px] border border-line">
-                  <table className="w-full text-left text-[13px]">
-                    <thead className="bg-mist text-[10px] uppercase tracking-[0.1em] text-muted">
+                  <table className="w-full text-left text-micro">
+                    <thead className="bg-mist text-label uppercase tracking-[0.1em] text-muted">
                       <tr>
                         <th className="px-3 py-2.5 font-medium">Compound</th>
                         <th className="px-3 py-2.5 font-medium">Concentration</th>
@@ -297,7 +297,7 @@ export default function ProductPage({ params }: Params) {
                     </tbody>
                   </table>
                 </div>
-                <p className="mt-3 text-[11px] leading-relaxed text-muted">
+                <p className="mt-3 text-label leading-relaxed text-muted">
                   Concentration is measured per mL; verified content reflects the total assayed
                   mass across the stated fill volume.
                 </p>
@@ -325,7 +325,7 @@ export default function ProductPage({ params }: Params) {
                 }}
               />
               {/* Mandatory research-use disclaimer (adjacent to Add to Cart) */}
-              <p className="mt-3 text-[12px] leading-relaxed text-muted">
+              <p className="mt-3 text-micro leading-relaxed text-muted">
                 {compliance.productDisclaimer}
               </p>
             </div>
@@ -336,7 +336,7 @@ export default function ProductPage({ params }: Params) {
                 (c) => (
                   <li
                     key={c}
-                    className="rounded-full border border-line px-3.5 py-1.5 text-[12px] text-muted"
+                    className="rounded-full border border-line px-3.5 py-1.5 text-micro text-muted"
                   >
                     {c}
                   </li>
@@ -352,7 +352,7 @@ export default function ProductPage({ params }: Params) {
             <h2 className="t-h2">Related products</h2>
             <Link
               href="/#products"
-              className="link-underline hidden text-[14px] font-medium uppercase tracking-[0.08em] text-brand-teal sm:inline-flex"
+              className="link-underline hidden text-body font-medium uppercase tracking-[0.08em] text-brand-teal sm:inline-flex"
             >
               View all
             </Link>
@@ -366,13 +366,9 @@ export default function ProductPage({ params }: Params) {
             could add a product to the bag from every rail on the site except
             the one on its own sibling's page.
           */}
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="product-grid mt-10">
             {related.map((r) => (
-              <ProductCard
-                key={r.slug}
-                product={r}
-                sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-              />
+              <ProductCard key={r.slug} product={r} />
             ))}
           </div>
         </section>

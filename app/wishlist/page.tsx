@@ -17,7 +17,7 @@ export default function WishlistPage() {
   return (
     <main className="pt-28 md:pt-32">
       <div className="frame pb-section-sm md:pb-section">
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-micro text-muted">
           <Link href="/" className="transition-colors hover:text-brand-teal">
             Home
           </Link>
@@ -36,7 +36,7 @@ export default function WishlistPage() {
             <button
               type="button"
               onClick={clear}
-              className="text-[13px] font-medium text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+              className="text-micro font-medium text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
             >
               Clear wishlist
             </button>
@@ -56,23 +56,18 @@ export default function WishlistPage() {
           </div>
         ) : (
           <>
-            <p className="mt-10 text-[13px] font-normal text-muted">
+            <p className="mt-10 text-micro font-normal text-muted">
               {items.length} {items.length === 1 ? 'product' : 'products'}
             </p>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="product-grid mt-6">
               {items.map((product, i) => (
-                <ProductCard
-                  key={product.slug}
-                  product={product}
-                  priority={i < 3}
-                  sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-                />
+                <ProductCard key={product.slug} product={product} priority={i < 4} />
               ))}
             </div>
           </>
         )}
 
-        <p className="mt-16 border-t border-line pt-6 text-[12px] font-normal leading-relaxed text-muted">
+        <p className="mt-16 border-t border-line pt-6 text-micro font-normal leading-relaxed text-muted">
           {compliance.productDisclaimer}
         </p>
       </div>

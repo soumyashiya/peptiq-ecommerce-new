@@ -42,7 +42,7 @@ export function CartDrawer() {
           >
             {/* header */}
             <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <h2 id="cart-drawer-title" className="text-[15px] font-medium uppercase tracking-[0.1em]">
+              <h2 id="cart-drawer-title" className="text-body font-medium uppercase tracking-[0.1em]">
                 Cart <span className="text-muted">({count})</span>
               </h2>
               <button
@@ -60,7 +60,7 @@ export function CartDrawer() {
                 <p className="t-lead text-muted">Your cart is empty</p>
                 <button
                   onClick={closeCart}
-                  className="text-[14px] font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
+                  className="text-body font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
                 >
                   Continue browsing
                 </button>
@@ -81,14 +81,14 @@ export function CartDrawer() {
                         <Link
                           href={`/products/${it.slug}`}
                           onClick={closeCart}
-                          className="text-[15px] font-medium leading-snug hover:text-brand-teal"
+                          className="text-body font-medium leading-snug hover:text-brand-teal"
                         >
                           {it.name}
                         </Link>
                         <button
                           onClick={() => remove(it.slug)}
                           aria-label={`Remove ${it.name}`}
-                          className="flex-none text-[12px] text-muted transition-colors hover:text-brand"
+                          className="flex-none text-micro text-muted transition-colors hover:text-brand"
                         >
                           Remove
                         </button>
@@ -103,7 +103,7 @@ export function CartDrawer() {
                           >
                             −
                           </button>
-                          <span className="w-7 text-center text-[14px] tabular-nums">{it.qty}</span>
+                          <span className="w-7 text-center text-body tabular-nums">{it.qty}</span>
                           <button
                             onClick={() => setQty(it.slug, it.qty + 1)}
                             aria-label="Increase quantity"
@@ -112,7 +112,7 @@ export function CartDrawer() {
                             +
                           </button>
                         </div>
-                        <span className="text-[15px] font-medium tabular-nums">
+                        <span className="text-body font-medium tabular-nums">
                           {usd(it.price * it.qty)}
                         </span>
                       </div>
@@ -125,17 +125,17 @@ export function CartDrawer() {
             {/* footer */}
             {items.length > 0 && (
               <div className="border-t border-line px-6 py-6">
-                <div className="flex items-center justify-between text-[16px]">
+                <div className="flex items-center justify-between text-body">
                   <span className="text-muted">Subtotal</span>
                   <span className="font-medium tabular-nums">{usd(subtotal)}</span>
                 </div>
-                <p className="mt-1.5 text-[12px] text-muted">
+                <p className="mt-1.5 text-micro text-muted">
                   Totals calculated at checkout.
                 </p>
                 <Link
                   href="/checkout"
                   onClick={closeCart}
-                  className="group mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-brand py-4 text-[14px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
+                  className="group mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-brand py-4 text-body font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
                 >
                   Checkout
                   <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
@@ -145,11 +145,11 @@ export function CartDrawer() {
                 <Link
                   href="/cart"
                   onClick={closeCart}
-                  className="mt-3 flex w-full items-center justify-center py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
+                  className="mt-3 flex w-full items-center justify-center py-3 text-micro font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
                 >
                   View full cart
                 </Link>
-                <p className="mt-4 text-center text-[11px] leading-relaxed text-muted">
+                <p className="mt-4 text-center text-label leading-relaxed text-muted">
                   For laboratory research use only. Not for human or veterinary consumption.
                 </p>
               </div>

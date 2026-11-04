@@ -23,9 +23,6 @@ import { Reveal } from '@/components/ui/Reveal';
  * button replays it with sound and native controls. Only one plays at a time.
  */
 
-/** Matches the band treatment used by the other feature sections. */
-const SECTION_GRADIENT =
-  'linear-gradient(180deg, #F1EBFC 0%, #DFCFFD 14%, #D2BFFC 48%, #D7C6FC 78%, #F1EBFC 100%)';
 
 type Item = (typeof reviewReel.items)[number];
 
@@ -45,7 +42,7 @@ function Card({
   onEnd: () => void;
 }) {
   return (
-    <li className="relative mr-5 aspect-[9/16] w-[62vw] flex-none overflow-hidden rounded-[1.25rem] bg-ink/10 sm:w-[38vw] lg:w-[19vw]">
+    <li className="relative mr-5 aspect-[9/16] w-[56vw] flex-none overflow-hidden rounded-[1.25rem] bg-ink/10 sm:w-[33vw] lg:w-[16vw]">
       {isPlaying && item.video ? (
         <video
           src={item.video}
@@ -74,7 +71,7 @@ function Card({
               src={item.poster}
               alt=""
               fill
-              sizes="(min-width: 1024px) 19vw, (min-width: 640px) 38vw, 62vw"
+              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 56vw"
               className="object-cover"
             />
           )}
@@ -83,14 +80,14 @@ function Card({
 
           <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3">
             <div className="min-w-0">
-              <p className="flex items-center gap-1.5 text-[0.875rem] font-bold uppercase tracking-[0.04em] text-paper">
+              <p className="flex items-center gap-1.5 text-[1.0625rem] font-bold uppercase md:text-h3 tracking-[0.04em] text-paper">
                 <span className="truncate">{item.name}</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" className="flex-none fill-brand-sky" aria-hidden>
                   <path d="M12 2.5 14.6 5l3.5-.4.6 3.5 3 1.9-1.4 3.2 1.4 3.2-3 1.9-.6 3.5-3.5-.4L12 23.5 9.4 21l-3.5.4-.6-3.5-3-1.9L3.7 12.8 2.3 9.6l3-1.9.6-3.5 3.5.4Z" />
                   <path d="m8.5 12.5 2.3 2.3 4.7-4.8" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </p>
-              <p className="mt-0.5 truncate text-[0.6875rem] uppercase tracking-[0.12em] text-paper/70">{item.meta}</p>
+              <p className="mt-0.5 truncate text-label uppercase tracking-[0.12em] text-paper/70">{item.meta}</p>
             </div>
 
             {item.video && (
@@ -120,7 +117,7 @@ export function ReviewReel() {
   const copies = reduce ? [0] : [0, 1];
 
   return (
-    <section id="reviews" className="scroll-mt-28 py-section-sm" style={{ backgroundImage: SECTION_GRADIENT }}>
+    <section id="reviews" className="scroll-mt-28 py-section-sm">
       <div className="frame">
         <Reveal className="text-center">
           <span className="pill-eyebrow">
@@ -133,8 +130,8 @@ export function ReviewReel() {
             </span>
             {reviewReel.pill}
           </span>
-          <h2 className="mx-auto mt-6 max-w-[18ch] text-balance t-h1 uppercase text-ink">{reviewReel.title}</h2>
-          <p className="mx-auto mt-4 max-w-[44ch] text-[0.9375rem] font-normal leading-relaxed text-ink/65">
+          <h2 className="mx-auto mt-6 max-w-[18ch] text-balance t-h1 text-ink">{reviewReel.title}</h2>
+          <p className="mx-auto mt-4 max-w-[44ch] text-body font-medium text-ink/65">
             {reviewReel.subtitle}
           </p>
         </Reveal>

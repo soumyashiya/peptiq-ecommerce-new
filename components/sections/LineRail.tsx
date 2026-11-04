@@ -46,7 +46,7 @@ function Tile({ line }: { line: (typeof lines.items)[number] }) {
     // bold uppercase name and one small grey line, centred underneath.
     <Link
       href={line.href}
-      className="group/tile mr-6 flex w-[78vw] shrink-0 flex-col items-center text-center sm:w-[42vw] lg:w-[23vw]"
+      className="group/tile mr-6 flex w-[70vw] shrink-0 flex-col items-center text-center sm:w-[36vw] lg:w-[19vw]"
     >
       <div
         className="relative aspect-[4/5] w-full overflow-hidden rounded-[10px]"
@@ -57,7 +57,7 @@ function Tile({ line }: { line: (typeof lines.items)[number] }) {
             src={line.image}
             alt=""
             fill
-            sizes="(min-width: 1024px) 23vw, (min-width: 640px) 42vw, 78vw"
+            sizes="(min-width: 1024px) 19vw, (min-width: 640px) 36vw, 70vw"
             className="object-cover transition-transform duration-700 ease-smooth group-hover/tile:scale-[1.04]"
           />
         )}
@@ -66,16 +66,16 @@ function Tile({ line }: { line: (typeof lines.items)[number] }) {
             Always visible on touch screens (no hover there) and on keyboard focus. */}
         <span
           aria-hidden
-          className="absolute inset-x-3 bottom-3 translate-y-[calc(100%+0.75rem)] rounded-md bg-ink py-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-paper opacity-0 transition-all duration-500 ease-smooth group-hover/tile:translate-y-0 group-hover/tile:opacity-100 group-focus-visible/tile:translate-y-0 group-focus-visible/tile:opacity-100 max-md:translate-y-0 max-md:opacity-100"
+          className="absolute inset-x-3 bottom-3 translate-y-[calc(100%+0.75rem)] rounded-md bg-ink py-3 text-micro font-semibold uppercase tracking-[0.12em] text-paper opacity-0 transition-all duration-500 ease-smooth group-hover/tile:translate-y-0 group-hover/tile:opacity-100 group-focus-visible/tile:translate-y-0 group-focus-visible/tile:opacity-100 max-md:translate-y-0 max-md:opacity-100"
         >
           Shop the line
         </span>
       </div>
 
-      <h3 className="mt-4 text-[1.05rem] font-extrabold uppercase leading-tight tracking-[0.02em] text-ink">
+      <h3 className="mt-4 text-body font-extrabold uppercase leading-tight tracking-[0.02em] text-ink">
         {line.label}
       </h3>
-      <p className="figures mt-1.5 text-[13px] text-muted">
+      <p className="figures mt-1.5 text-micro text-muted">
         {count} {count === 1 ? 'product' : 'products'}
       </p>
     </Link>
@@ -96,7 +96,7 @@ export function LineRail() {
             </span>
             <h2 className="mt-5 t-h2">{lines.title}</h2>
           </div>
-          <Link href="/shop" className="link-underline shrink-0 whitespace-nowrap text-[13px] font-medium">
+          <Link href="/shop" className="link-underline shrink-0 whitespace-nowrap text-micro font-medium">
             {lines.cta}
             <span aria-hidden>→</span>
           </Link>
@@ -117,7 +117,7 @@ export function LineRail() {
       </div>
 
       <div className="frame">
-        <p className="mt-8 text-[12px] font-normal uppercase tracking-[0.12em] text-muted">
+        <p className="mt-8 text-micro font-normal uppercase tracking-[0.12em] text-muted">
           {lines.items.length} lines · hover to pause
         </p>
       </div>

@@ -119,37 +119,37 @@ export function JanoshikModal({
             </svg>
           </div>
 
-          <h2 className="mt-4 text-center text-[20px] font-medium text-ink">
+          <h2 className="mt-4 text-center text-h3 font-medium text-ink">
             Janoshik Third-Party Lab Analysis
           </h2>
-          <p className="mt-2 text-center text-[13px] text-muted">
+          <p className="mt-2 text-center text-micro text-muted">
             Independently tested and verified by Janoshik Analytical.
           </p>
 
           {/* Batch meta */}
           <dl className="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-[8px] border border-line bg-line sm:grid-cols-3">
             <div className="bg-paper px-4 py-3 text-center sm:text-left">
-              <dt className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
+              <dt className="text-label font-medium uppercase tracking-[0.12em] text-muted">
                 Batch number
               </dt>
-              <dd className="mt-1.5 text-[15px] font-medium text-ink">
+              <dd className="mt-1.5 text-body font-medium text-ink">
                 {janoshik.batchNumber}
               </dd>
             </div>
             <div className="bg-paper px-4 py-3 text-center sm:text-left">
-              <dt className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
+              <dt className="text-label font-medium uppercase tracking-[0.12em] text-muted">
                 Fill volume
               </dt>
-              <dd className="mt-1.5 text-[15px] font-medium text-ink">
+              <dd className="mt-1.5 text-body font-medium text-ink">
                 {janoshik.fillVolume}
               </dd>
             </div>
             {janoshik.purity && (
               <div className="bg-paper px-4 py-3 text-center sm:text-left">
-                <dt className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
+                <dt className="text-label font-medium uppercase tracking-[0.12em] text-muted">
                   Purity
                 </dt>
-                <dd className="mt-1.5 text-[15px] font-semibold text-brand-teal">
+                <dd className="mt-1.5 text-body font-semibold text-brand-teal">
                   {janoshik.purity}
                 </dd>
               </div>
@@ -158,8 +158,8 @@ export function JanoshikModal({
 
           {/* Compounds table */}
           <div className="mt-4 overflow-hidden rounded-[8px] border border-line">
-            <table className="w-full text-left text-[13px]">
-              <thead className="bg-mist text-[10px] font-medium uppercase tracking-[0.1em] text-muted">
+            <table className="w-full text-left text-micro">
+              <thead className="bg-mist text-label font-medium uppercase tracking-[0.1em] text-muted">
                 <tr>
                   <th className="px-3 py-2.5">Compound</th>
                   <th className="px-3 py-2.5">Concentration</th>
@@ -180,7 +180,7 @@ export function JanoshikModal({
             </table>
           </div>
 
-          <p className="mt-4 text-[12px] leading-relaxed text-muted">
+          <p className="mt-4 text-micro leading-relaxed text-muted">
             Concentration is measured per mL; verified content reflects the total assayed
             mass across the stated fill volume.
           </p>
@@ -193,7 +193,7 @@ export function JanoshikModal({
               href={labTestUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-[8px] bg-brand-teal px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal/90"
+              className="inline-flex items-center gap-2 rounded-[8px] bg-brand-teal px-6 py-3 text-micro font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal/90"
             >
               View full Janoshik report
               <span aria-hidden>↗</span>

@@ -38,7 +38,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className ?? ''}`}>
-      <span className="mb-2 block text-[13px] text-ink">
+      <span className="mb-2 block text-micro text-ink">
         {label}
         {optional && <span className="ml-1 text-muted">(optional)</span>}
       </span>
@@ -49,7 +49,7 @@ function Field({
         autoComplete={autoComplete}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        className="h-12 w-full rounded-full border border-transparent bg-paper px-5 text-[15px] text-ink placeholder:text-muted/70 outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
+        className="h-12 w-full rounded-full border border-transparent bg-paper px-5 text-body text-ink placeholder:text-muted/70 outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
       />
     </label>
   );
@@ -242,7 +242,7 @@ export default function CheckoutPage() {
           </p>
           <Link
             href="/#products"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-9 py-4 text-[14px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-9 py-4 text-body font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand"
           >
             Browse products →
           </Link>
@@ -254,7 +254,7 @@ export default function CheckoutPage() {
   return (
     <main className="pt-24 md:pt-28">
       <div className="frame pb-section-sm md:pb-section">
-        <div className="flex items-center gap-4 text-[13px]">
+        <div className="flex items-center gap-4 text-micro">
           <Link
             href="/cart"
             className="inline-flex items-center gap-2 text-ink transition-colors hover:text-brand-teal"
@@ -274,7 +274,7 @@ export default function CheckoutPage() {
           <div className="lg:col-span-7">
             {/* Contact */}
             <section>
-              <h2 className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">
+              <h2 className="text-micro font-medium uppercase tracking-[0.14em] text-muted">
                 Contact
               </h2>
               <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -316,7 +316,7 @@ export default function CheckoutPage() {
 
             {/* Contact address */}
             <section className="mt-10">
-              <h2 className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">
+              <h2 className="text-micro font-medium uppercase tracking-[0.14em] text-muted">
                 Contact address
               </h2>
               <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -351,12 +351,12 @@ export default function CheckoutPage() {
                   placeholder="NW1 6XE"
                 />
                 <label className="block sm:col-span-2">
-                  <span className="mb-2 block text-[13px] text-ink">Country</span>
+                  <span className="mb-2 block text-micro text-ink">Country</span>
                   <select
                     name="country"
                     required
                     defaultValue={user?.country_of_residence || 'United Kingdom'}
-                    className="h-12 w-full rounded-full border border-transparent bg-paper px-5 text-[15px] text-ink outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
+                    className="h-12 w-full rounded-full border border-transparent bg-paper px-5 text-body text-ink outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
                   >
                     {[
                       'United Kingdom',
@@ -380,7 +380,7 @@ export default function CheckoutPage() {
           {/* Order summary */}
           <div className="lg:col-span-5">
             <div className="rounded-[18px] bg-paper p-6 md:p-8 lg:sticky lg:top-28">
-              <h2 className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">
+              <h2 className="text-micro font-medium uppercase tracking-[0.14em] text-muted">
                 Order summary
               </h2>
 
@@ -397,14 +397,14 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div className="flex min-w-0 flex-1 flex-col">
-                      <span className="text-[15px] font-medium leading-snug text-ink">
+                      <span className="text-body font-medium leading-snug text-ink">
                         {it.name}
                       </span>
-                      <span className="mt-0.5 text-[12px] text-muted">
+                      <span className="mt-0.5 text-micro text-muted">
                         Qty {it.qty}
                       </span>
                     </div>
-                    <span className="flex-none text-[15px] tabular-nums">
+                    <span className="flex-none text-body tabular-nums">
                       {usd(it.price * it.qty)}
                     </span>
                   </li>
@@ -425,7 +425,7 @@ export default function CheckoutPage() {
                     aria-label="Promo code"
                     aria-invalid={promoError ? true : undefined}
                     aria-describedby={promoError ? 'promo-error' : undefined}
-                    className="h-11 flex-1 rounded-full border border-transparent bg-mist/60 px-4 text-[14px] text-ink placeholder:text-muted outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
+                    className="h-11 flex-1 rounded-full border border-transparent bg-mist/60 px-4 text-body text-ink placeholder:text-muted outline-none transition-all duration-200 focus:border-ink/20 focus:ring-4 focus:ring-ink/5"
                   />
                   <button
                     type="button"
@@ -433,7 +433,7 @@ export default function CheckoutPage() {
                     disabled={
                       !promo.trim() || promoLoading || promo.trim().toUpperCase() === promoAppliedCode
                     }
-                    className="h-11 rounded-full border border-line bg-paper px-5 text-[13px] font-medium text-ink transition-colors hover:border-ink/40 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="h-11 rounded-full border border-line bg-paper px-5 text-micro font-medium text-ink transition-colors hover:border-ink/40 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {promoLoading
                       ? '…'
@@ -443,17 +443,17 @@ export default function CheckoutPage() {
                   </button>
                 </div>
                 {promoError && (
-                  <p id="promo-error" role="alert" className="mt-2 text-[12px] text-brand">
+                  <p id="promo-error" role="alert" className="mt-2 text-micro text-brand">
                     {promoError}
                   </p>
                 )}
                 {promoAppliedCode && (
-                  <p className="mt-2 text-[12px] text-brand-teal">
+                  <p className="mt-2 text-micro text-brand-teal">
                     <span className="font-medium">{promoAppliedCode}</span> applied — {promoPercent}% off
                   </p>
                 )}
 
-                <dl className="mt-6 space-y-2 text-[14px]">
+                <dl className="mt-6 space-y-2 text-body">
                   <div className="flex justify-between">
                     <dt className="text-muted">Subtotal</dt>
                     <dd className="tabular-nums text-ink">{usd(subtotal)}</dd>
@@ -467,13 +467,13 @@ export default function CheckoutPage() {
                 </dl>
 
                 <div className="mt-5 flex items-baseline justify-between border-t border-line pt-5">
-                  <span className="text-[17px] font-medium">Total</span>
-                  <span className="text-[22px] font-normal tabular-nums">{usd(total)}</span>
+                  <span className="text-lead font-medium">Total</span>
+                  <span className="text-price font-normal tabular-nums">{usd(total)}</span>
                 </div>
               </div>
 
               {submitError && (
-                <div className="mt-4 rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-[13px] text-brand">
+                <div className="mt-4 rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-micro text-brand">
                   {submitError}
                 </div>
               )}
@@ -483,7 +483,7 @@ export default function CheckoutPage() {
               <div
                 role="note"
                 aria-label="Research-use acknowledgement"
-                className="mt-6 space-y-2 rounded-[10px] border border-line bg-mist/60 p-4 text-[12px] leading-relaxed text-muted"
+                className="mt-6 space-y-2 rounded-[10px] border border-line bg-mist/60 p-4 text-micro leading-relaxed text-muted"
               >
                 <p>
                   <span className="font-medium text-ink">Research-use acknowledgement.</span>{' '}
@@ -495,7 +495,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-4 flex h-14 w-full items-center justify-center rounded-full bg-ink text-[14px] font-medium text-paper transition-colors hover:bg-brand disabled:opacity-60"
+                className="mt-4 flex h-14 w-full items-center justify-center rounded-full bg-ink text-body font-medium text-paper transition-colors hover:bg-brand disabled:opacity-60"
               >
                 {submitting ? 'Placing order…' : `Place order · ${usd(total)}`}
               </button>
@@ -564,18 +564,18 @@ export default function CheckoutPage() {
 
                 <div className="mt-6 flex items-center justify-between rounded-[12px] bg-paper px-5 py-4 text-left">
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
+                    <p className="text-label font-medium uppercase tracking-[0.1em] text-muted">
                       Order reference
                     </p>
-                    <p className="mt-1 text-[14px] font-medium tabular-nums">
+                    <p className="mt-1 text-body font-medium tabular-nums">
                       {confirmed.orderNumber}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-muted">
+                    <p className="text-label font-medium uppercase tracking-[0.1em] text-muted">
                       Total
                     </p>
-                    <p className="mt-1 text-[15px] font-medium tabular-nums">
+                    <p className="mt-1 text-body font-medium tabular-nums">
                       {usd(confirmed.total)}
                     </p>
                   </div>
@@ -584,19 +584,19 @@ export default function CheckoutPage() {
                 <div className="mt-6 flex gap-3">
                   <Link
                     href={`/order/${confirmed.orderNumber}`}
-                    className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-[13px] font-medium text-paper transition-colors hover:bg-brand"
+                    className="flex h-12 flex-1 items-center justify-center rounded-full bg-ink text-micro font-medium text-paper transition-colors hover:bg-brand"
                   >
                     Track order
                   </Link>
                   <Link
                     href="/"
-                    className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-[13px] font-medium text-ink transition-colors hover:border-ink/40"
+                    className="flex h-12 flex-1 items-center justify-center rounded-full border border-line bg-paper text-micro font-medium text-ink transition-colors hover:border-ink/40"
                   >
                     Back to home
                   </Link>
                 </div>
 
-                <p className="mt-5 text-[11px] leading-relaxed text-muted">
+                <p className="mt-5 text-label leading-relaxed text-muted">
                   {compliance.productDisclaimerShort} {compliance.checkoutMedical}
                 </p>
               </motion.div>

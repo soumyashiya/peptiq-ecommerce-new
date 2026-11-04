@@ -50,8 +50,8 @@ export function NewsletterForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="mt-6 max-w-sm">
-      <p className="text-[0.8125rem] font-semibold text-ink">Newsletter</p>
-      <p className="mt-1.5 text-[0.8125rem] font-normal text-muted">
+      <p className="text-micro font-semibold text-ink">Newsletter</p>
+      <p className="mt-1.5 text-micro font-normal text-muted">
         Batch drops, storage tips, sourcing notes. No spam.
       </p>
 
@@ -64,12 +64,12 @@ export function NewsletterForm() {
           placeholder="you@lab.com"
           aria-label="Email address for newsletter"
           disabled={state.kind === 'submitting' || state.kind === 'success'}
-          className="h-11 flex-1 rounded-full border border-line bg-mist px-4 text-[0.875rem] text-ink outline-none transition-colors placeholder:text-muted focus:border-brand disabled:opacity-50"
+          className="h-11 flex-1 rounded-full border border-line bg-mist px-4 text-body text-ink outline-none transition-colors placeholder:text-muted focus:border-brand disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={state.kind === 'submitting' || state.kind === 'success' || !email.trim()}
-          className="h-11 rounded-full bg-brand-lime px-5 text-[0.875rem] font-semibold text-ink transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-40"
+          className="h-11 rounded-full bg-brand-lime px-5 text-body font-semibold text-ink transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-40"
         >
           {state.kind === 'submitting' ? 'Subscribing…' : 'Subscribe'}
         </button>
@@ -77,7 +77,7 @@ export function NewsletterForm() {
 
       {/* The checkbox is styled globally in globals.css — it used to render as
           a raw OS widget in system blue, the only off-palette colour on the page. */}
-      <label className="mt-3.5 flex cursor-pointer items-start gap-2.5 text-[0.8125rem] font-normal text-muted">
+      <label className="mt-3.5 flex cursor-pointer items-start gap-2.5 text-micro font-normal text-muted">
         <input
           type="checkbox"
           checked={consent}
@@ -100,12 +100,12 @@ export function NewsletterForm() {
       />
 
       {state.kind === 'success' && (
-        <p role="status" className="mt-3 text-[0.8125rem] font-medium text-brand-teal">
+        <p role="status" className="mt-3 text-micro font-medium text-brand-teal">
           {state.message}
         </p>
       )}
       {state.kind === 'error' && (
-        <p role="alert" className="mt-3 text-[0.8125rem] font-medium text-brand">
+        <p role="alert" className="mt-3 text-micro font-medium text-brand">
           {state.message}
         </p>
       )}

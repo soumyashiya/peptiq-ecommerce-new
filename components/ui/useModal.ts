@@ -33,9 +33,13 @@ export function useModal<T extends HTMLElement>(isOpen: boolean, onClose: () => 
     const restoreTo = document.activeElement as HTMLElement | null;
 
     // Lock scroll, compensating for the scrollbar so the page doesn't shift (CLS).
+    // `html` has to be locked too: its `overflow-x: clip` stops `overflow` on `body`
+    // from reaching the viewport, so the body alone leaves the page scrollable.
+    const prevRootOverflow = document.documentElement.style.overflow;
     const prevOverflow = document.body.style.overflow;
     const prevPadding = document.body.style.paddingRight;
     const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
 
@@ -79,6 +83,7 @@ export function useModal<T extends HTMLElement>(isOpen: boolean, onClose: () => 
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
+      document.documentElement.style.overflow = prevRootOverflow;
       document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPadding;
       // Return focus to whatever opened the modal (the cart button, the burger…).

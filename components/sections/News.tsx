@@ -64,10 +64,15 @@ export function News() {
   }, []);
 
   return (
-    <section id="news" className="scroll-mt-28 py-section-sm md:py-section">
+    <section
+      id="news"
+      className="scroll-mt-28 py-section-sm md:py-section"
+      // Picks up the pale lavender `Process` ends on and returns to the page colour.
+      style={{ backgroundImage: 'linear-gradient(180deg, #F1EBFC 0%, #D2BFFC 40%)' }}
+    >
       <div className="frame">
         <Reveal>
-          <h2 className="mx-auto max-w-[24ch] text-balance text-center t-h1 uppercase text-ink">{news.title}</h2>
+          <h2 className="mx-auto max-w-[24ch] text-balance text-center t-h1 text-ink">{news.title}</h2>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -79,7 +84,7 @@ export function News() {
             {news.items.map((t, i) => {
               const isOpen = open === i;
               return (
-                <li key={t.name} className="w-[78%] flex-none snap-start sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]">
+                <li key={t.name} className="w-[70%] flex-none snap-start sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]">
                   <button
                     type="button"
                     onClick={() => setOpen(isOpen ? null : i)}
@@ -91,7 +96,7 @@ export function News() {
                       src={t.avatar}
                       alt=""
                       fill
-                      sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 78vw"
+                      sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 70vw"
                       className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.04]"
                     />
 
@@ -103,15 +108,15 @@ export function News() {
                     >
                       <span className="flex items-center gap-2" aria-label={`${t.rating} out of 5`}>
                         <Stars n={t.rating} />
-                        <span className="figures text-[12px] font-semibold">{t.rating.toFixed(1)}</span>
+                        <span className="figures text-micro font-semibold">{t.rating.toFixed(1)}</span>
                       </span>
-                      <span className="mt-4 block text-[0.9375rem] leading-relaxed text-paper/90">“{t.quote}”</span>
+                      <span className="mt-4 block text-body font-medium text-paper/90">“{t.quote}”</span>
                     </span>
 
                     {/* Name tag */}
                     <span className="absolute bottom-0 left-0 bg-paper px-5 py-4 pr-10">
-                      <span className="block text-[0.9375rem] font-bold text-ink">{t.name}</span>
-                      <span className="mt-1 block text-[0.75rem] text-muted">
+                      <span className="block text-[1.0625rem] font-bold text-ink md:text-h3">{t.name}</span>
+                      <span className="mt-1 block text-micro text-muted">
                         {t.role} · {t.org}
                       </span>
                     </span>

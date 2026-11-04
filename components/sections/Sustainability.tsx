@@ -158,7 +158,7 @@ export function Sustainability() {
           <p className="max-w-2xl t-lead text-paper">{s.body}</p>
           <a
             href={s.cta.href}
-            className="group mt-7 inline-flex items-center gap-2 text-[14px] font-medium uppercase tracking-[0.08em] text-paper"
+            className="group mt-7 inline-flex items-center gap-2 text-body font-medium uppercase tracking-[0.08em] text-paper"
           >
             {s.cta.label}
             <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>

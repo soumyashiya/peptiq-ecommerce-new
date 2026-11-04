@@ -143,13 +143,13 @@ export default function PaymentCapturePage() {
               type="button"
               onClick={applyPromo}
               disabled={promoLoading}
-              className="shrink-0 border border-line px-6 text-[13px] font-medium text-ink transition-colors hover:border-ink disabled:opacity-60"
+              className="shrink-0 border border-line px-6 text-micro font-medium text-ink transition-colors hover:border-ink disabled:opacity-60"
             >
               {promoLoading ? 'Applying…' : 'Apply'}
             </button>
           </div>
           {promoError && (
-            <p className="mt-2 text-[13px] font-normal text-red-600">{promoError}</p>
+            <p className="mt-2 text-micro font-normal text-red-600">{promoError}</p>
           )}
         </div>
       )}
@@ -169,13 +169,13 @@ export default function PaymentCapturePage() {
           type="file"
           accept="image/*,application/pdf"
           onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-          className="mt-4 block w-full text-body font-normal text-muted file:mr-4 file:border-0 file:bg-ink file:px-5 file:py-2.5 file:text-[13px] file:font-medium file:text-paper hover:file:bg-brand"
+          className="mt-4 block w-full text-body font-normal text-muted file:mr-4 file:border-0 file:bg-ink file:px-5 file:py-2.5 file:text-micro file:font-medium file:text-paper hover:file:bg-brand"
         />
 
         {uploadError && (
           <p
             role="alert"
-            className="mt-4 border border-red-600/25 bg-red-600/5 px-4 py-3 text-[13px] font-normal text-red-700"
+            className="mt-4 border border-red-600/25 bg-red-600/5 px-4 py-3 text-micro font-normal text-red-700"
           >
             {uploadError}
           </p>
@@ -184,7 +184,7 @@ export default function PaymentCapturePage() {
         {uploadStatus === 'received' && (
           <p
             role="status"
-            className="mt-4 border border-brand-sky/40 bg-brand-soft/30 px-4 py-3 text-[13px] font-medium text-brand-teal"
+            className="mt-4 border border-brand-sky/40 bg-brand-soft/30 px-4 py-3 text-micro font-medium text-brand-teal"
           >
             Payment confirmed. Thank you — your order is being prepared.
           </p>
@@ -192,7 +192,7 @@ export default function PaymentCapturePage() {
         {uploadStatus === 'pending' && (
           <p
             role="status"
-            className="mt-4 border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-[13px] font-medium text-ink"
+            className="mt-4 border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-micro font-medium text-ink"
           >
             Screenshot received. Verification is queued; we’ll email you with the result.
           </p>
@@ -200,7 +200,7 @@ export default function PaymentCapturePage() {
         {uploadStatus === 'rejected' && (
           <p
             role="alert"
-            className="mt-4 border border-red-600/30 bg-red-600/5 px-4 py-3 text-[13px] font-medium text-red-700"
+            className="mt-4 border border-red-600/30 bg-red-600/5 px-4 py-3 text-micro font-medium text-red-700"
           >
             We couldn’t verify this screenshot. Please re-upload a clearer image of the transfer.
           </p>
@@ -216,7 +216,7 @@ export default function PaymentCapturePage() {
         </button>
       </div>
 
-      <p className="mt-16 border-t border-line pt-6 text-[12px] font-normal leading-relaxed text-muted">
+      <p className="mt-16 border-t border-line pt-6 text-micro font-normal leading-relaxed text-muted">
         {compliance.productDisclaimer}
       </p>
     </div>
@@ -236,7 +236,7 @@ function BankRow({
 }) {
   return (
     <div className="bg-mist px-5 py-4">
-      <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted">{label}</p>
+      <p className="text-label font-medium uppercase tracking-[0.14em] text-muted">{label}</p>
       <p
         className={`mt-1 ${mono ? 'font-mono tracking-wide' : ''} ${
           highlight ? 't-h3 text-ink' : 'text-body text-ink'

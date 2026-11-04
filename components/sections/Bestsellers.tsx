@@ -5,8 +5,13 @@ import { merch, getProducts, compliance } from '@/lib/content';
 import { Rail } from '@/components/ui/Rail';
 import { ProductCard } from '@/components/products/ProductCard';
 
-/** Cards shown in the collapsed grid before "Shop all" expands the rail. */
-const PREVIEW_COUNT = 3;
+/**
+ * Cards shown in the collapsed grid before "Shop all" expands the rail.
+ *
+ * Four, not three, because `.product-grid` is four-up from `xl` — three cards
+ * left a quarter of the row empty next to the "Shop all" button.
+ */
+const PREVIEW_COUNT = 4;
 
 /**
  * Bestsellers. Carries the `#products` anchor that the nav points at, since it
@@ -76,41 +81,43 @@ export function Bestsellers() {
               {visible.map((product) => (
                 <div
                   key={product.slug}
-                  className="w-[78vw] shrink-0 snap-start sm:w-[42vw] lg:w-[23vw]"
+                  className="w-[70vw] shrink-0 snap-start sm:w-[36vw] lg:w-[19vw]"
                 >
                   <ProductCard
                     variant="minimal"
                     product={product}
-                    sizes="(min-width: 1024px) 23vw, (min-width: 640px) 42vw, 78vw"
+                    sizes="(min-width: 1024px) 19vw, (min-width: 640px) 36vw, 70vw"
                   />
                 </div>
               ))}
             </Rail>
           ) : (
             /*
-             * Collapsed state is a grid, not the rail: three rail-width cards
-             * would leave the right third of the row empty, so the preview
-             * spans the frame and lines up flush with the heading on both edges.
+             * Collapsed state is a grid, not the rail: rail-width cards would
+             * leave the right of the row empty, so the preview spans the frame
+             * and lines up flush with the heading on both edges. It uses the
+             * shared `.product-grid`, so the preview cards are the same size as
+             * the shop's — {@link PREVIEW_COUNT} is set to fill its widest row.
+             *
+             * Four-up from `lg` rather than `xl`: these are the pared-back
+             * `minimal` cards, which hold at the width the expanded rail gives
+             * them at that breakpoint (19vw), and taking the fourth track a
+             * breakpoint later would leave one card stranded on its own row.
              */
             <>
-              <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="product-grid lg:grid-cols-4">
                 {visible.map((product) => (
-                  <ProductCard
-                    key={product.slug}
-                    variant="minimal"
-                    product={product}
-                    sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-                  />
+                  <ProductCard key={product.slug} variant="minimal" product={product} />
                 ))}
               </div>
-              <p className="mt-8 text-[12px] font-normal uppercase tracking-[0.12em] text-muted">
+              <p className="mt-8 text-micro font-normal uppercase tracking-[0.12em] text-muted">
                 {`${visible.length} of ${items.length} lines`}
               </p>
             </>
           )}
         </div>
 
-        <p className="mt-10 border-t border-line pt-6 text-[12px] font-normal text-muted">
+        <p className="mt-10 border-t border-line pt-6 text-micro font-normal text-muted">
           {compliance.productDisclaimerShort}
         </p>
       </div>

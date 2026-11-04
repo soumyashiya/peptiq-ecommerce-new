@@ -18,13 +18,9 @@ import { Reveal } from '@/components/ui/Reveal';
  * through here without touching `spotlight`. Each slide `image` must be a
  * transparent cut-out — it floats directly on the band with no panel.
  *
- * Built on a `brand.soft` band for the same reason as the assurances section:
- * the offer panel is frosted glass, and glass needs a saturated surface
- * underneath it to read as glass. The band ramps from and back to the page
- * colour so neither neighbour meets it on a hard seam.
+ * Sits directly on the lavender page, which the frosted offer panel needs in
+ * order to read as glass.
  */
-const SECTION_GRADIENT =
-  'linear-gradient(180deg, #F1EBFC 0%, #DFCFFD 15%, #D2BFFC 48%, #D7C6FC 75%, #F1EBFC 100%)';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -66,7 +62,6 @@ export function Spotlight() {
       aria-roledescription="carousel"
       aria-label="Featured products"
       className="relative scroll-mt-28 overflow-hidden py-section-sm"
-      style={{ backgroundImage: SECTION_GRADIENT }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -81,7 +76,7 @@ export function Spotlight() {
           animate={{ opacity: 1 }}
           exit={reduce ? undefined : { opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center font-display text-[clamp(6rem,17vw,18rem)] font-extrabold uppercase leading-none tracking-tight text-paper/25"
+          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center font-display text-[clamp(6rem,17vw,18rem)] font-normal uppercase leading-none tracking-tight text-paper/25"
         >
           {slide.title}
         </motion.p>
@@ -102,7 +97,7 @@ export function Spotlight() {
             {/* Breathing glow behind the product. */}
             <span
               aria-hidden
-              className="spot-glow absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(168,120,250,0.55)_0%,rgba(210,191,252,0.35)_45%,rgba(210,191,252,0)_70%)] blur-2xl"
+              className="spot-glow absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.55)_0%,rgba(210,191,252,0.35)_45%,rgba(210,191,252,0)_70%)] blur-2xl"
             />
             {/* Drifting orbs — staggered so they never move in sync. */}
             {[
@@ -114,7 +109,7 @@ export function Spotlight() {
               <span
                 key={pos}
                 aria-hidden
-                className={`spot-orb absolute rounded-full bg-paper/80 shadow-[0_0_18px_rgba(168,120,250,0.6)] ${pos}`}
+                className={`spot-orb absolute rounded-full bg-paper/80 shadow-[0_0_18px_rgba(255,255,255,0.6)] ${pos}`}
               />
             ))}
             <div className="spot-float relative h-full w-full">
@@ -144,11 +139,11 @@ export function Spotlight() {
         <Reveal direction="left" delay={0.1} className="w-full">
           <AnimatePresence mode="wait">
             <motion.div key={slide.slug} {...fade} aria-live="polite">
-              <span className="inline-block rounded-full bg-brand-lime px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink">
+              <span className="inline-block rounded-full bg-brand-lime px-3.5 py-1.5 text-label font-bold uppercase tracking-[0.16em] text-ink">
                 {slide.badge}
               </span>
 
-              <h2 className="mt-5 break-words t-h1 uppercase text-ink">
+              <h2 className="mt-5 break-words t-h1 text-ink">
                 {slide.title}
                 <span className="text-brand">.</span>
               </h2>
@@ -158,7 +153,7 @@ export function Spotlight() {
                 {slide.chips.map((chip) => (
                   <li
                     key={chip}
-                    className="flex items-center gap-1.5 rounded-full bg-paper/50 px-3.5 py-1.5 text-[12px] font-medium text-ink [backdrop-filter:saturate(1.8)_blur(20px)]"
+                    className="flex items-center gap-1.5 rounded-full bg-paper/50 px-3.5 py-1.5 text-micro font-medium text-ink [backdrop-filter:saturate(1.8)_blur(20px)]"
                   >
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <circle cx="12" cy="12" r="9" />
@@ -170,7 +165,7 @@ export function Spotlight() {
               </ul>
 
               <div className="glass mt-8 max-w-[480px] p-6 md:p-7">
-                <p className="flex items-center gap-2 text-[12px] font-medium text-ink/70">
+                <p className="flex items-center gap-2 text-micro font-medium text-ink/70">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-teal" aria-hidden>
                     <path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6Z" />
                     <path d="m9 12 2 2 4-4" />
@@ -179,23 +174,23 @@ export function Spotlight() {
                 </p>
 
                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                  <span className="figures text-[1.9rem] font-bold leading-none text-ink">
+                  <span className="figures text-price font-bold leading-none text-ink">
                     {formatPrice(perDelivery)}
                   </span>
-                  <span className="figures text-[15px] text-ink/50 line-through">
+                  <span className="figures text-body font-medium text-ink/50 line-through">
                     {formatPrice(product.price)}
                   </span>
-                  <span className="rounded-full bg-brand-lime px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-ink">
+                  <span className="rounded-full bg-brand-lime px-2.5 py-1 text-label font-bold uppercase tracking-[0.12em] text-ink">
                     Save {Math.round(SUPPLY_DISCOUNT * 100)}%
                   </span>
                 </div>
-                <p className="mt-2 text-[13px] font-normal text-ink/65">{spotlight.supplyNote}</p>
+                <p className="mt-2 text-micro font-normal text-ink/65">{spotlight.supplyNote}</p>
 
                 <Link href={href} className="btn-primary mt-7">
                   {slide.cta}
                 </Link>
 
-                <p className="mt-5 text-[11px] font-normal text-ink/55">{spotlight.footnote}</p>
+                <p className="mt-5 text-label font-normal text-ink/70">{spotlight.footnote}</p>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -233,7 +228,7 @@ export function Spotlight() {
             </div>
           )}
 
-          <p className="mt-6 text-[11px] font-normal text-ink/55">
+          <p className="mt-6 text-label font-normal text-ink/70">
             {compliance.productDisclaimerShort}
           </p>
         </Reveal>

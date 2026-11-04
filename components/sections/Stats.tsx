@@ -25,7 +25,7 @@ export function Stats() {
     <section className="py-section-sm">
       <div className="frame">
         <Reveal>
-          <p className="text-[0.8125rem] font-normal text-muted">{stats.label}</p>
+          <p className="text-micro font-normal text-muted">{stats.label}</p>
         </Reveal>
 
         <Reveal
@@ -44,7 +44,7 @@ export function Stats() {
               >
                 <Counter value={s.value} suffix={s.suffix} />
               </div>
-              <p className="mt-3 max-w-[22ch] text-[0.8125rem] font-normal leading-relaxed text-muted">
+              <p className="mt-3 max-w-[22ch] text-micro font-normal leading-relaxed text-muted">
                 {s.caption}
               </p>
               {isVerified(s.caption) && (

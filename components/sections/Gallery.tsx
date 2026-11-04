@@ -48,11 +48,11 @@ export function Gallery() {
             <Reveal delay={0.1}>
               <p className="max-w-prose text-body text-muted">{gallery.intro}</p>
               <div className="mt-6 flex items-center gap-4 font-normal tabular-nums">
-                <span className="text-[2.5rem] leading-none text-brand-sky">
+                <span className="text-h2-sm leading-none text-brand-sky">
                   0{active + 1}
                 </span>
                 <span className="h-px w-10 bg-ink/20" />
-                <span className="text-[1.25rem] leading-none text-muted">
+                <span className="text-h3 leading-none text-muted">
                   0{items.length}
                 </span>
               </div>
@@ -100,13 +100,13 @@ export function Gallery() {
                   <CornerTicks show={isActive} />
 
                   {/* index, top-left */}
-                  <span className="absolute left-5 top-5 text-[13px] font-medium tracking-[0.1em] text-paper/80">
+                  <span className="absolute left-5 top-5 text-micro font-medium tracking-[0.1em] text-paper/80">
                     0{i + 1}
                   </span>
 
                   {/* collapsed: vertical label */}
                   <span
-                    className={`absolute bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[15px] font-normal uppercase tracking-[0.15em] text-paper transition-opacity duration-300 [writing-mode:vertical-rl] ${
+                    className={`absolute bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-body font-normal uppercase tracking-[0.15em] text-paper transition-opacity duration-300 [writing-mode:vertical-rl] ${
                       isActive ? 'opacity-0' : 'opacity-90'
                     }`}
                     style={{ transform: 'translateX(-50%) rotate(180deg)' }}
@@ -128,7 +128,7 @@ export function Gallery() {
                     <span className="mt-3 block t-h3 text-paper">
                       {it.title}
                     </span>
-                    <span className="mt-3 block max-w-md text-[15px] leading-relaxed text-paper/70">
+                    <span className="mt-3 block max-w-md text-body leading-relaxed text-paper/70">
                       {it.caption}
                     </span>
                     {/* animated underline accent */}
@@ -156,7 +156,7 @@ export function Gallery() {
                   className="object-cover"
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                <span className="absolute left-4 top-4 text-[12px] font-medium tracking-[0.1em] text-paper/80">
+                <span className="absolute left-4 top-4 text-micro font-medium tracking-[0.1em] text-paper/80">
                   0{i + 1}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-5">
@@ -164,7 +164,7 @@ export function Gallery() {
                     {it.tag}
                   </span>
                   <h3 className="mt-2 t-h3">{it.title}</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-paper/70">{it.caption}</p>
+                  <p className="mt-2 text-body leading-relaxed text-paper/70">{it.caption}</p>
                 </div>
               </div>
             </RevealItem>

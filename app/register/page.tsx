@@ -10,8 +10,8 @@ import { brand } from '@/lib/content';
 
 /* ── shared field styling ── */
 const inputBase =
-  'h-[46px] w-full rounded-[11px] border border-line bg-paper pl-11 pr-4 text-[15px] text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-brand-sky focus:ring-4 focus:ring-brand-sky/12';
-const labelClass = 'mb-1.5 block text-[13px] font-medium text-ink';
+  'h-[46px] w-full rounded-[11px] border border-line bg-paper pl-11 pr-4 text-body text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-brand-sky focus:ring-4 focus:ring-brand-sky/12';
+const labelClass = 'mb-1.5 block text-micro font-medium text-ink';
 
 const COUNTRIES = [
   'United Kingdom',
@@ -170,7 +170,7 @@ export default function RegisterPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="grid w-full grid-cols-1 overflow-hidden rounded-[28px] bg-paper shadow-[0_40px_100px_-40px_rgba(0,30,90,0.4)] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)]"
+          className="grid w-full grid-cols-1 overflow-hidden rounded-[28px] bg-paper shadow-[0_40px_100px_-40px_rgba(0,0,0,0.4)] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)]"
         >
           {/* ── Left: light brand panel ── */}
           <aside className="relative hidden flex-col justify-between overflow-hidden bg-mist p-8 lg:flex xl:p-10">
@@ -195,7 +195,7 @@ export default function RegisterPage() {
             {/* brand lockup */}
             <div className="relative z-10">
               <Link href="/" className="flex items-center gap-2.5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-gradient-to-br from-brand-sky to-brand text-paper shadow-[0_8px_20px_-8px_rgba(24,99,220,0.7)]">
+                <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-gradient-to-br from-brand-sky to-brand text-paper shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)]">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                     <circle cx="12" cy="3" r="1.7" fill="currentColor" />
@@ -203,16 +203,16 @@ export default function RegisterPage() {
                     <circle cx="4.2" cy="16.5" r="1.7" fill="currentColor" />
                   </svg>
                 </span>
-                <span className="text-[22px] font-semibold tracking-[-0.025em] text-brand">{brand.name}</span>
+                <span className="text-price font-semibold tracking-[-0.025em] text-brand">{brand.name}</span>
               </Link>
-              <p className="mt-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+              <p className="mt-2.5 text-label font-semibold uppercase tracking-[0.18em] text-muted">
                 Research supply, refined
               </p>
             </div>
 
             {/* editorial copy */}
             <div className="relative z-10">
-              <p className="flex items-center gap-2 text-[13px] font-medium text-brand">
+              <p className="flex items-center gap-2 text-micro font-medium text-brand">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 3 5 6v5c0 4.4 3 8.3 7 9.5 4-1.2 7-5.1 7-9.5V6l-7-3Z" />
                   <path d="m9 12 2 2 4-4" />
@@ -224,7 +224,7 @@ export default function RegisterPage() {
                 <br />
                 <span className="text-brand-sky">Proven purity.</span>
               </h2>
-              <p className="mt-4 max-w-sm text-[15px] font-normal leading-relaxed text-muted">
+              <p className="mt-4 max-w-sm text-body font-normal leading-relaxed text-muted">
                 High-quality research peptides, verified, traceable and delivered with integrity.
               </p>
 
@@ -232,7 +232,7 @@ export default function RegisterPage() {
                 {FEATURES.map((f) => (
                   <div key={f.label} className="flex flex-col items-center gap-2 text-center text-brand">
                     {f.icon}
-                    <span className="whitespace-pre-line text-[11px] font-medium leading-tight text-muted">
+                    <span className="whitespace-pre-line text-label font-medium leading-tight text-muted">
                       {f.label}
                     </span>
                   </div>
@@ -250,23 +250,23 @@ export default function RegisterPage() {
                   <path d="M12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span className="text-[19px] font-semibold tracking-[-0.025em] text-brand">{brand.name}</span>
+              <span className="text-h3 font-semibold tracking-[-0.025em] text-brand">{brand.name}</span>
             </div>
 
             {/* header row */}
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h1 className="font-serif text-[32px] font-medium tracking-tight text-ink sm:text-[38px]">
+                <h1 className="font-serif text-h2-sm font-medium tracking-tight text-ink sm:text-h2-sm">
                   Create account
                 </h1>
-                <p className="mt-2 text-[14px] text-muted">
+                <p className="mt-2 text-body text-muted">
                   Join {brand.name} and access premium research peptides.
                 </p>
               </div>
               <button
                 type="button"
                 aria-label="Language: English"
-                className="flex flex-none items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-[13px] font-medium text-brand transition-colors hover:bg-mist"
+                className="flex flex-none items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-micro font-medium text-brand transition-colors hover:bg-mist"
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="9" />
@@ -333,7 +333,7 @@ export default function RegisterPage() {
                   type="button"
                   onClick={() => setShowPw((v) => !v)}
                   aria-label={showPw ? 'Hide password' : 'Show password'}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[12px] font-semibold uppercase tracking-[0.08em] text-brand transition-colors hover:text-brand-teal"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-micro font-semibold uppercase tracking-[0.08em] text-brand transition-colors hover:text-brand-teal"
                 >
                   {showPw ? 'Hide' : 'Show'}
                 </button>
@@ -398,7 +398,7 @@ export default function RegisterPage() {
                   role="alert"
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="rounded-[10px] border border-brand/30 bg-brand/5 px-4 py-3 text-[13px] text-brand"
+                  className="rounded-[10px] border border-brand/30 bg-brand/5 px-4 py-3 text-micro text-brand"
                 >
                   {error}
                 </motion.div>
@@ -408,7 +408,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group mt-1 flex h-[50px] w-full items-center justify-center gap-2.5 rounded-[12px] bg-brand text-[15px] font-semibold text-paper shadow-[0_16px_36px_-14px_rgba(24,99,220,0.7)] transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
+                className="group mt-1 flex h-[50px] w-full items-center justify-center gap-2.5 rounded-[12px] bg-brand text-body font-semibold text-paper shadow-[0_16px_36px_-14px_rgba(0,0,0,0.5)] transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
               >
                 {submitting ? 'Creating account…' : 'Create research account'}
                 {!submitting && (
@@ -418,7 +418,7 @@ export default function RegisterPage() {
                 )}
               </button>
 
-              <p className="text-center text-[14px] text-muted">
+              <p className="text-center text-body text-muted">
                 Already have an account?{' '}
                 <Link href="/login" className="font-semibold text-brand underline underline-offset-2">
                   Log in here

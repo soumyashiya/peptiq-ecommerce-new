@@ -83,7 +83,7 @@ export default function LoginPage() {
                 <circle cx="4.2" cy="16.5" r="1.7" fill="currentColor" />
               </svg>
             </span>
-            <span className="text-[20px] font-semibold tracking-[-0.025em]">{brand.name}</span>
+            <span className="text-h3 font-semibold tracking-[-0.025em]">{brand.name}</span>
           </Link>
 
           {/* editorial statement */}
@@ -101,7 +101,7 @@ export default function LoginPage() {
             </h2>
             <ul className="mt-10 space-y-4">
               {featureBullets.map((b) => (
-                <li key={b} className="flex items-start gap-3 text-[15px] text-paper/85">
+                <li key={b} className="flex items-start gap-3 text-body text-paper/85">
                   <span className="mt-1.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-paper/15">
                     <svg
                       width="10"
@@ -123,7 +123,7 @@ export default function LoginPage() {
           </motion.div>
 
           {/* footer note */}
-          <p className="relative z-10 text-[12px] uppercase tracking-[0.1em] text-paper/60">
+          <p className="relative z-10 text-micro uppercase tracking-[0.1em] text-paper/60">
             For laboratory research use only · Not for human consumption
           </p>
         </aside>
@@ -149,11 +149,11 @@ export default function LoginPage() {
                     />
                   </svg>
                 </span>
-                <span className="text-[16px] font-semibold tracking-[-0.025em]">{brand.name}</span>
+                <span className="text-body font-semibold tracking-[-0.025em]">{brand.name}</span>
               </Link>
               <Link
                 href="/"
-                className="text-[12px] font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal"
+                className="text-micro font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal"
               >
                 ← Home
               </Link>
@@ -162,7 +162,7 @@ export default function LoginPage() {
             {/* desktop-only back link */}
             <Link
               href="/"
-              className="hidden text-[12px] font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal lg:inline-block"
+              className="hidden text-micro font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal lg:inline-block"
             >
               ← Back to home
             </Link>
@@ -181,7 +181,7 @@ export default function LoginPage() {
 
             <form onSubmit={onSubmit} className="mt-10 space-y-5">
               <label className="block">
-                <span className="mb-2 block text-[13px] font-medium text-ink">Email address</span>
+                <span className="mb-2 block text-micro font-medium text-ink">Email address</span>
                 <div className="group relative">
                   <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
                     <svg
@@ -205,13 +205,13 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@lab.com"
-                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-4 text-[15px] text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
+                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-4 text-body text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
                   />
                 </div>
               </label>
 
               <label className="block">
-                <span className="mb-2 block text-[13px] font-medium text-ink">Password</span>
+                <span className="mb-2 block text-micro font-medium text-ink">Password</span>
                 <div className="group relative">
                   <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
                     <svg
@@ -235,13 +235,13 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-16 text-[15px] text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
+                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-16 text-body text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPw((v) => !v)}
                     aria-label={showPw ? 'Hide password' : 'Show password'}
-                    className="absolute right-3 top-1/2 flex h-8 -translate-y-1/2 items-center rounded-full px-3 text-[11px] font-medium uppercase tracking-[0.08em] text-brand-teal transition-colors hover:bg-brand-teal/10"
+                    className="absolute right-3 top-1/2 flex h-8 -translate-y-1/2 items-center rounded-full px-3 text-label font-medium uppercase tracking-[0.08em] text-brand-teal transition-colors hover:bg-brand-teal/10"
                   >
                     {showPw ? 'Hide' : 'Show'}
                   </button>
@@ -249,14 +249,14 @@ export default function LoginPage() {
                 <div className="mt-2 flex justify-end">
                   <Link
                     href="/forgot-password"
-                    className="text-[12px] font-medium text-brand-teal transition-colors hover:text-brand"
+                    className="text-micro font-medium text-brand-teal transition-colors hover:text-brand"
                   >
                     Forgot password?
                   </Link>
                 </div>
               </label>
 
-              <label className="flex cursor-pointer items-center gap-2.5 text-[13px] text-muted">
+              <label className="flex cursor-pointer items-center gap-2.5 text-micro text-muted">
                 <input
                   type="checkbox"
                   checked={remember}
@@ -271,7 +271,7 @@ export default function LoginPage() {
                   role="alert"
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-[13px] text-brand"
+                  className="rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-micro text-brand"
                 >
                   {error}
                 </motion.div>
@@ -280,7 +280,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-[14px] font-medium text-paper transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
+                className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-body font-medium text-paper transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
               >
                 {submitting ? 'Signing in…' : 'Sign in'}
                 {!submitting && (
@@ -294,14 +294,14 @@ export default function LoginPage() {
               </button>
             </form>
 
-            <p className="mt-8 text-center text-[14px] text-muted">
+            <p className="mt-8 text-center text-body text-muted">
               New to {brand.name}?{' '}
               <Link href="/register" className="font-medium text-brand-teal link-underline">
                 Create an account
               </Link>
             </p>
 
-            <div className="mt-10 flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.1em] text-muted">
+            <div className="mt-10 flex items-center justify-center gap-2 text-label uppercase tracking-[0.1em] text-muted">
               <svg
                 width="12"
                 height="12"

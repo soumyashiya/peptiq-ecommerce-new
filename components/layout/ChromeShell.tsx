@@ -21,7 +21,7 @@ export function ChromeShell({ children }: { children: React.ReactNode }) {
       {!bare && (
         <a
           href="#main-content"
-          className="sr-only rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:outline-none focus:ring-4 focus:ring-brand-sky/40"
+          className="sr-only rounded-full bg-ink px-5 py-3 text-micro font-medium text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:outline-none focus:ring-4 focus:ring-brand-sky/40"
         >
           Skip to content
         </a>

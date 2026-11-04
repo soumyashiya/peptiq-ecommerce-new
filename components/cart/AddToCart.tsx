@@ -18,7 +18,7 @@ export function AddToCart({ product }: { product: Omit<CartItem, 'qty'> }) {
         >
           −
         </button>
-        <span className="min-w-[2ch] text-center text-[16px] tabular-nums">{qty}</span>
+        <span className="min-w-[2ch] text-center text-body tabular-nums">{qty}</span>
         <button
           onClick={() => setQty((q) => q + 1)}
           aria-label="Increase quantity"
@@ -30,7 +30,7 @@ export function AddToCart({ product }: { product: Omit<CartItem, 'qty'> }) {
 
       <button
         onClick={() => add(product, qty)}
-        className="group flex h-14 flex-1 items-center justify-center gap-3 rounded-full bg-brand px-9 text-[14px] font-medium uppercase tracking-[0.08em] text-paper transition-colors duration-300 hover:bg-brand-teal"
+        className="group flex h-14 flex-1 items-center justify-center gap-3 rounded-full bg-brand px-9 text-body font-medium uppercase tracking-[0.08em] text-paper transition-colors duration-300 hover:bg-brand-teal"
       >
         Add to cart
         <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>

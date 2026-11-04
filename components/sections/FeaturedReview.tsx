@@ -32,7 +32,7 @@ export function FeaturedReview() {
     <section id="featured-review" className="scroll-mt-28 py-section-sm">
       <div className="frame">
         <Reveal>
-          <h2 className="mx-auto max-w-[18ch] text-center font-display text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-ink">
+          <h2 className="mx-auto max-w-[18ch] text-center font-display text-[clamp(2.5rem,5.5vw,5rem)] font-normal uppercase leading-[0.92] tracking-tight text-ink">
             {featuredReview.title}
           </h2>
         </Reveal>
@@ -59,12 +59,12 @@ export function FeaturedReview() {
               ))}
             </div>
             <div>
-              <p className="text-[0.9375rem] font-semibold text-ink">{review.name}</p>
+              <p className="text-body font-semibold text-ink">{review.name}</p>
               <div className="mt-2 flex items-center gap-2" aria-label={`${review.rating} out of 5`}>
                 <Stars n={review.rating} />
-                <span className="figures text-[13px] font-semibold text-ink">{review.rating.toFixed(1)}</span>
+                <span className="figures text-micro font-semibold text-ink">{review.rating.toFixed(1)}</span>
               </div>
-              <p className="mt-1 text-[12px] text-muted">
+              <p className="mt-1 text-micro text-muted">
                 {review.role} · {review.org}
               </p>
             </div>
@@ -88,7 +88,7 @@ export function FeaturedReview() {
             <svg width="64" height="48" viewBox="0 0 64 48" className="fill-brand" aria-hidden>
               <path d="M0 48V28C0 12.5 7.6 3.2 22.8 0l3 6.4C17.4 9 13.3 14 12.6 21.6H26V48H0Zm38 0V28C38 12.5 45.6 3.2 60.8 0l3 6.4C55.4 9 51.3 14 50.6 21.6H64V48H38Z" />
             </svg>
-            <blockquote className="mt-5 max-w-[30ch] text-[0.9375rem] leading-relaxed text-ink/80">
+            <blockquote className="mt-5 max-w-[30ch] text-body leading-relaxed text-ink/80">
               “{review.quote}”
             </blockquote>
           </Reveal>

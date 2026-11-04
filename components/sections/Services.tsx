@@ -53,7 +53,7 @@ export function Services() {
 
                 <div className={flip ? 'lg:order-1' : ''}>
                   <Reveal direction={flip ? 'right' : 'left'}>
-                    <span className="text-[13px] font-medium tracking-[0.1em] text-brand-sky">
+                    <span className="text-micro font-medium tracking-[0.1em] text-brand-sky">
                       0{i + 1}
                     </span>
                     <h3 className="mt-5 t-h2">{item.title}</h3>

@@ -81,7 +81,7 @@ export default function ForgotPasswordPage() {
                 <circle cx="4.2" cy="16.5" r="1.7" fill="currentColor" />
               </svg>
             </span>
-            <span className="text-[20px] font-semibold tracking-[-0.025em]">{brand.name}</span>
+            <span className="text-h3 font-semibold tracking-[-0.025em]">{brand.name}</span>
           </Link>
 
           <motion.div
@@ -98,7 +98,7 @@ export default function ForgotPasswordPage() {
             </h2>
             <ul className="mt-10 space-y-4">
               {featureBullets.map((b) => (
-                <li key={b} className="flex items-start gap-3 text-[15px] text-paper/85">
+                <li key={b} className="flex items-start gap-3 text-body text-paper/85">
                   <span className="mt-1.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-paper/15">
                     <svg
                       width="10"
@@ -119,7 +119,7 @@ export default function ForgotPasswordPage() {
             </ul>
           </motion.div>
 
-          <p className="relative z-10 text-[12px] uppercase tracking-[0.1em] text-paper/60">
+          <p className="relative z-10 text-micro uppercase tracking-[0.1em] text-paper/60">
             For laboratory research use only · Not for human consumption
           </p>
         </aside>
@@ -145,11 +145,11 @@ export default function ForgotPasswordPage() {
                     />
                   </svg>
                 </span>
-                <span className="text-[16px] font-semibold tracking-[-0.025em]">{brand.name}</span>
+                <span className="text-body font-semibold tracking-[-0.025em]">{brand.name}</span>
               </Link>
               <Link
                 href="/login"
-                className="text-[12px] font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal"
+                className="text-micro font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal"
               >
                 ← Sign in
               </Link>
@@ -158,7 +158,7 @@ export default function ForgotPasswordPage() {
             {/* desktop-only back link */}
             <Link
               href="/login"
-              className="hidden text-[12px] font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal lg:inline-block"
+              className="hidden text-micro font-medium uppercase tracking-[0.1em] text-muted transition-colors hover:text-brand-teal lg:inline-block"
             >
               ← Back to sign in
             </Link>
@@ -180,7 +180,7 @@ export default function ForgotPasswordPage() {
             {!sent && (
               <form onSubmit={onSubmit} className="mt-10 space-y-5">
                 <label className="block">
-                  <span className="mb-2 block text-[13px] font-medium text-ink">Email address</span>
+                  <span className="mb-2 block text-micro font-medium text-ink">Email address</span>
                   <div className="group relative">
                     <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
                       <svg
@@ -204,7 +204,7 @@ export default function ForgotPasswordPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@lab.com"
-                      className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-4 text-[15px] text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
+                      className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-4 text-body text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
                     />
                   </div>
                 </label>
@@ -214,7 +214,7 @@ export default function ForgotPasswordPage() {
                     role="alert"
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-[13px] text-brand"
+                    className="rounded-[8px] border border-brand/30 bg-brand/5 px-4 py-3 text-micro text-brand"
                   >
                     {error}
                   </motion.div>
@@ -223,7 +223,7 @@ export default function ForgotPasswordPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-[14px] font-medium text-paper transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
+                  className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-body font-medium text-paper transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
                 >
                   {submitting ? 'Sending…' : 'Send reset link'}
                   {!submitting && (
@@ -246,14 +246,14 @@ export default function ForgotPasswordPage() {
                     setSent(false);
                     setEmail('');
                   }}
-                  className="text-[13px] font-medium text-brand-teal hover:text-brand"
+                  className="text-micro font-medium text-brand-teal hover:text-brand"
                 >
                   Use a different email
                 </button>
               </div>
             )}
 
-            <p className="mt-8 text-center text-[14px] text-muted">
+            <p className="mt-8 text-center text-body text-muted">
               Remembered it?{' '}
               <Link href="/login" className="font-medium text-brand-teal link-underline">
                 Back to sign in

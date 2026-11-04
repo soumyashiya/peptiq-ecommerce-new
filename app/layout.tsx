@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Quicksand, Baloo_2, IBM_Plex_Mono } from 'next/font/google';
+import { Quicksand, Lilita_One, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { AuthProvider } from '@/components/auth/AuthProvider';
@@ -33,17 +33,39 @@ const sans = Quicksand({
 
 /*
  * Headline face. The reference's headline font is **Indarung** — a licensed,
- * self-hosted, single-weight (400) caps-only display woff2 served from its own
- * CDN, so it cannot be used here. Baloo 2 at 800 is the closest freely-licensed
- * match in mass, width and roundness.
+ * self-hosted, single-weight display woff2 served from its own CDN, so it
+ * cannot be used here and must be substituted.
  *
- * Applied via `.t-display` / `.t-h1` / `.t-h2` in globals.css. Like the
- * reference, it now covers section headings too, not just page titles; `.t-h3`
- * and below stay in Quicksand, which is the same split the reference makes.
+ * ── Why this is Lilita One and no longer Baloo 2 ─────────────────────────
+ * Baloo 2 was the previous substitute, described as "the closest freely
+ * licensed match in mass, width and roundness". Checked against a live capture
+ * of the reference, that was wrong on the dimension that matters most:
+ * Indarung is CONDENSED — narrow, tightly fitted, heavy, with slightly flared
+ * terminals. Baloo 2 is wide and soft. Matching the roundness while missing
+ * the condensation meant the headings never looked like the reference no
+ * matter what size they were set at, which is exactly the symptom that kept
+ * coming back as "the typography hasn't changed".
+ *
+ * Lilita One matches the axis that was missing: a single-weight condensed
+ * display face with the same heavy, slightly flared, friendly character.
+ *
+ * ── On the weight ────────────────────────────────────────────────────────
+ * Lilita One ships ONE weight (400), like Indarung — for both faces, 400 *is*
+ * the bold. That is why `.t-display` / `.t-h1` / `.t-h2` / `.t-h2-sm` now say
+ * `font-normal` rather than `font-extrabold`: asking for 800 from a
+ * single-weight family makes the browser synthesise a faux bold, which smears
+ * the letterforms. This now matches the reference's own `font-weight: 400`.
+ *
+ * To swap it again, change the import and the `weight` here — the `.t-*`
+ * classes read `--font-display` and need no edit (but revisit `font-normal`
+ * if the replacement is a multi-weight family).
+ *
+ * Alternatives if this one isn't right: `Anton` (more condensed, colder and
+ * more neutral) or `Bungee` (squarer, more poster-like).
  */
-const display = Baloo_2({
+const display = Lilita_One({
   subsets: ['latin'],
-  weight: ['700', '800'],
+  weight: ['400'],
   variable: '--font-display',
   display: 'swap',
 });
@@ -126,7 +148,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#6B4FA8',
+  themeColor: '#D2BFFC',
   colorScheme: 'light',
   width: 'device-width',
   initialScale: 1,

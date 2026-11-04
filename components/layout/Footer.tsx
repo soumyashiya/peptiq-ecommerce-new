@@ -48,7 +48,7 @@ export function Footer() {
             <p className="mt-6 max-w-xs text-body font-normal text-muted first-letter:uppercase">
               {brand.tagline.toLowerCase()}
             </p>
-            <div className="mt-7 space-y-1.5 text-[0.875rem] text-muted">
+            <div className="mt-7 space-y-1.5 text-body text-muted">
               <p>
                 <a href={`mailto:${brand.email}`} className="transition-colors hover:text-ink">
                   {brand.email}

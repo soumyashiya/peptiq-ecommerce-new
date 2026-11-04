@@ -38,7 +38,7 @@ export function PackageDetailTabs({
               aria-controls={`panel-${t.id}`}
               id={`tab-${t.id}`}
               onClick={() => setActive(t.id)}
-              className={`relative flex-1 rounded-t-[6px] px-4 py-3 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors ${
+              className={`relative flex-1 rounded-t-[6px] px-4 py-3 text-micro font-medium uppercase tracking-[0.08em] transition-colors ${
                 isActive
                   ? 'bg-mist text-brand-teal'
                   : 'text-muted hover:text-ink'
@@ -62,7 +62,7 @@ export function PackageDetailTabs({
         aria-labelledby={`tab-${current.id}`}
         className="px-6 py-6"
       >
-        <ul className="space-y-2 text-[14px] text-muted">
+        <ul className="space-y-2 text-body text-muted">
           {current.body.map((line, i) => (
             <li key={i} className="leading-relaxed">
               {line}

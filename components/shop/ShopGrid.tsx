@@ -80,7 +80,7 @@ export function ShopGrid() {
               type="button"
               onClick={() => setParam('category', c.value)}
               aria-pressed={active}
-              className={`rounded-full border px-5 py-2.5 text-[13px] font-semibold transition-colors ${
+              className={`rounded-full border px-5 py-2.5 text-micro font-semibold transition-colors ${
                 active
                   ? 'border-ink bg-ink text-paper'
                   : 'border-line text-ink hover:border-ink hover:bg-mist'
@@ -99,28 +99,28 @@ export function ShopGrid() {
           onClick={() => setFiltersOpen((v) => !v)}
           aria-expanded={filtersOpen}
           aria-controls="shop-filters"
-          className="flex items-center gap-2 text-[13px] font-medium text-ink"
+          className="flex items-center gap-2 text-micro font-medium text-ink"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
             <path d="M4 6h16M7 12h10M10 18h4" />
           </svg>
           Filters
           {activeFilters > 0 && (
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-lime px-1.5 text-[11px] font-bold text-ink">
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-lime px-1.5 text-label font-bold text-ink">
               {activeFilters}
             </span>
           )}
         </button>
 
         <div className="flex items-center gap-3">
-          <label htmlFor="shop-sort" className="text-[13px] font-normal text-muted">
+          <label htmlFor="shop-sort" className="text-micro font-normal text-muted">
             Sort:
           </label>
           <select
             id="shop-sort"
             value={sort}
             onChange={(e) => setParam('sort', e.target.value)}
-            className="rounded-full border border-line bg-paper px-4 py-2 text-[13px] font-semibold text-ink outline-none transition-colors focus:border-brand"
+            className="rounded-full border border-line bg-paper px-4 py-2 text-micro font-semibold text-ink outline-none transition-colors focus:border-brand"
           >
             {shopControls.sorts.map((s) => (
               <option key={s.value} value={s.value}>
@@ -134,7 +134,7 @@ export function ShopGrid() {
       {/* Filter panel */}
       {filtersOpen && (
         <div id="shop-filters" className="mt-4 rounded-panel bg-mist px-6 py-6">
-          <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-muted">
+          <p className="text-micro font-medium uppercase tracking-[0.12em] text-muted">
             Format
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -146,7 +146,7 @@ export function ShopGrid() {
                   type="button"
                   onClick={() => setParam('format', active ? null : f.value)}
                   aria-pressed={active}
-                  className={`rounded-full border px-5 py-2.5 text-[13px] font-semibold transition-colors ${
+                  className={`rounded-full border px-5 py-2.5 text-micro font-semibold transition-colors ${
                     active
                       ? 'border-ink bg-ink text-paper'
                       : 'border-line bg-paper text-ink hover:border-ink'
@@ -160,7 +160,7 @@ export function ShopGrid() {
               <button
                 type="button"
                 onClick={() => router.replace('/shop', { scroll: false })}
-                className="ml-2 text-[13px] font-medium text-brand-teal underline-offset-4 hover:underline"
+                className="ml-2 text-micro font-medium text-brand-teal underline-offset-4 hover:underline"
               >
                 Clear all
               </button>
@@ -170,7 +170,7 @@ export function ShopGrid() {
       )}
 
       {/* Results */}
-      <p aria-live="polite" className="mt-8 text-[13px] font-normal text-muted">
+      <p aria-live="polite" className="mt-8 text-micro font-normal text-muted">
         {items.length} {items.length === 1 ? 'product' : 'products'}
       </p>
 
@@ -186,19 +186,14 @@ export function ShopGrid() {
           </button>
         </div>
       ) : (
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="product-grid mt-6">
           {items.map((product, i) => (
-            <ProductCard
-              key={product.slug}
-              product={product}
-              priority={i < 3}
-              sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-            />
+            <ProductCard key={product.slug} product={product} priority={i < 4} />
           ))}
         </div>
       )}
 
-      <p className="mt-16 border-t border-line pt-6 text-[12px] font-normal leading-relaxed text-muted">
+      <p className="mt-16 border-t border-line pt-6 text-micro font-normal leading-relaxed text-muted">
         {compliance.productDisclaimer}
       </p>
     </div>

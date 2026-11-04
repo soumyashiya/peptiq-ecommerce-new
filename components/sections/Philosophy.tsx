@@ -14,7 +14,7 @@ import { Reveal } from '@/components/ui/Reveal';
  * the purple primary button.
  */
 const BAND =
-  'linear-gradient(180deg, #F1EBFC 0%, #E6DAFD 14%, #DCCCFD 50%, #E6DAFD 86%, #F1EBFC 100%)';
+  'linear-gradient(180deg, #D2BFFC 0%, #E8DDF5 25%, #FAF8F5 50%, #E4D8F0 75%, #D2BFFC 100%)';
 
 export function Philosophy() {
   return (
@@ -25,7 +25,7 @@ export function Philosophy() {
     >
       <div className="frame grid items-center gap-10 lg:grid-cols-[minmax(0,34rem)_1fr] lg:gap-16">
         <Reveal>
-          <h2 className="t-h2 text-balance leading-[1.05] tracking-tight text-brand-teal">{philosophy.title}</h2>
+          <h2 className="t-h2 text-balance text-brand-teal">{philosophy.title}</h2>
           <div className="mt-6 space-y-3 text-body text-ink/70">
             {philosophy.body.map((p) => (
               <p key={p.slice(0, 20)}>{p}</p>

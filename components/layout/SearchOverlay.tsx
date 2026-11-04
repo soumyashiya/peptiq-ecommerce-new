@@ -92,7 +92,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="shrink-0 text-[12px] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:text-ink"
+                  className="shrink-0 text-micro font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:text-ink"
                 >
                   Close
                 </button>
@@ -124,10 +124,10 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                             />
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-[14px] font-medium text-ink">
+                            <span className="block text-body font-medium text-ink">
                               {p.name}
                             </span>
-                            <span className="block text-[13px] font-normal text-muted">
+                            <span className="block text-micro font-normal text-muted">
                               {p.tagline}
                             </span>
                           </span>
@@ -142,7 +142,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
 
                 {!query.trim() && (
                   <div className="py-8">
-                    <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-muted">
+                    <p className="text-micro font-medium uppercase tracking-[0.12em] text-muted">
                       Browse by line
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -153,7 +153,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                             key={c.value}
                             href={`/shop?category=${c.value}`}
                             onClick={onClose}
-                            className="rounded-full border border-line px-5 py-2.5 text-[13px] font-semibold text-ink transition-colors hover:border-ink hover:bg-mist"
+                            className="rounded-full border border-line px-5 py-2.5 text-micro font-semibold text-ink transition-colors hover:border-ink hover:bg-mist"
                           >
                             {c.label}
                           </Link>

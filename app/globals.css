@@ -27,13 +27,8 @@
 
   /*
    * Lavender is the PAGE colour, not an accent — white is reserved for cards,
-   * panels and inputs sitting on top of it. That inversion is the whole look:
-   * a section that wants to be white should say so, rather than relying on the
-   * page default as every page wrapper used to.
-   *
-   * `brand.wash` (#F1EBFC) is the page tone — pale enough that white panels on
-   * it need body of their own (see `.panel`), which is why it is a separate
-   * token from the deeper `brand.soft` surface.
+   * panels and inputs sitting on top of it. `brand.wash` is #D2BFFC, the
+   * reference's own lavender.
    */
   /*
    * Horizontal containment.
@@ -77,7 +72,7 @@
   select {
     @apply appearance-none bg-no-repeat;
     /* Chevron drawn in `muted`; keep in sync if that token moves. */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%236E6880' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23444444' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-position: right 0.9rem center;
   }
 
@@ -126,18 +121,18 @@
      reference's defining move: headline lines nearly touch, so a two-line
      title reads as one block of colour rather than two separate sentences. */
   .t-display {
-    @apply font-display text-display font-extrabold;
+    @apply font-display text-display font-normal;
   }
   .t-h1 {
-    @apply font-display text-h1 font-extrabold;
+    @apply font-display text-h1 font-normal;
   }
   .t-h2 {
-    @apply font-display text-h2 font-extrabold;
+    @apply font-display text-h2 font-normal;
   }
   /* A heading that is a full sentence — still the display face, one step down
      in size so a long statement doesn't shout. */
   .t-h2-sm {
-    @apply font-display text-h2-sm font-extrabold;
+    @apply font-display text-h2-sm font-normal;
   }
   .t-h3 {
     @apply font-sans text-h3 font-bold;
@@ -161,7 +156,7 @@
     @apply flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10;
   }
   .section-lead h2 {
-    @apply max-w-[18ch] font-display text-h2 font-extrabold text-balance;
+    @apply max-w-[18ch] font-display text-h2 font-normal text-balance;
   }
   .section-lead p {
     @apply mt-3 max-w-prose text-body text-muted;
@@ -201,17 +196,39 @@
     background: #000;
   }
 
+  /*
+   * TWO scrims, not one.
+   *
+   * The bottom-up ramp is the reference's and is unchanged. The left-to-right
+   * one was added when the hero headline went to 87px: at that size
+   * "ACTUALLY VERIFY." reaches far enough across the frame to land on the
+   * product carton the models are holding, and white type on a white carton is
+   * unreadable no matter how large it is.
+   *
+   * A scrim is the right fix rather than re-cropping the photo or shrinking the
+   * headline, because it holds at every viewport — the copy column always has
+   * something dark under it regardless of where the subject lands in frame.
+   * It is clear by 62%, so the models' faces on the right stay untouched.
+   */
   .hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.35) 35%,
-      rgba(0, 0, 0, 0.12) 60%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.34) 28%,
+        rgba(0, 0, 0, 0.12) 48%,
+        rgba(0, 0, 0, 0) 62%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.35) 35%,
+        rgba(0, 0, 0, 0.12) 60%,
+        rgba(0, 0, 0, 0) 100%
+      );
     pointer-events: none;
   }
 
@@ -244,15 +261,10 @@
     }
   }
 
-  .hero-button {
-    transition:
-      transform 250ms ease,
-      background-color 250ms ease;
-  }
-
-  .hero-button:hover {
-    transform: translateY(-2px);
-  }
+  /* `.hero-button` removed: the hero's two CTAs are now `.btn-primary` and
+     `.btn-secondary` (see Hero.tsx), and both already carry the same 2px hover
+     lift and transition this class existed to add. Keeping it would have left a
+     second, competing definition of what a button is. */
 
   /* ── Surfaces ──────────────────────────────────────────────────────────
      Three surfaces, three jobs. They exist so that six consecutive sections
@@ -287,7 +299,7 @@
      grey hairline) stays the right surface for things that sit on the page
      rather than on a band. */
   .glass {
-    @apply rounded-[18px] bg-paper/50 [backdrop-filter:saturate(1.8)_blur(20px)];
+    @apply rounded-[18px] border border-paper/65 bg-paper/50 [backdrop-filter:saturate(1.8)_blur(20px)];
   }
 
   /*
@@ -349,25 +361,24 @@
 
      Hover lifts rather than inverting to ink: with a 2px ink border, filling
      the button with ink would erase its own outline. */
-  /* Matched 1:1 to the hero's primary button (Hero.tsx) — 1.5px ink border,
-     15px/36px padding, 13→14px semibold caps at 0.06em — so every section's
-     call to action is the same object as the one in the hero. */
+  /* Both buttons now take their size from the `btn` token (15px / 1.15 /
+     0.07em) instead of a hardcoded 13→14px pair. The reference tracks its
+     buttons 1px at 14px; `btn` carries the em equivalent, so the tracking
+     scales with the size instead of drifting away from it. */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2.5 rounded-full border-[1.5px] border-ink bg-brand-lime
-           px-9 py-[15px] text-[13px] font-semibold uppercase tracking-[0.06em] text-ink
+           px-10 py-[17px] text-btn font-semibold uppercase text-ink
            transition-[transform,background-color,box-shadow] duration-300
-           hover:-translate-y-0.5 hover:bg-paper hover:shadow-[0_12px_26px_-12px_rgba(14,14,16,0.5)]
-           md:text-[14px];
+           hover:-translate-y-0.5 hover:bg-paper hover:shadow-[0_12px_26px_-12px_rgba(0,0,0,0.5)];
   }
 
   /* Secondary action: outlined pill, same metrics as the primary so the two
      sit level when they appear side by side. */
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2.5 rounded-full border-[1.5px] border-ink/25
-           px-9 py-[15px] text-[13px] font-semibold uppercase tracking-[0.06em] text-ink
+           px-10 py-[17px] text-btn font-semibold uppercase text-ink
            transition-[transform,border-color,background-color] duration-300
-           hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-paper
-           md:text-[14px];
+           hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-paper;
   }
 
   /* Pill label above a heading (icon + text). Same frosted material as the
@@ -376,6 +387,47 @@
     @apply inline-flex items-center gap-2 rounded-full bg-paper/50
            px-5 py-2.5 text-label font-bold uppercase text-ink/70
            [backdrop-filter:saturate(1.8)_blur(20px)];
+  }
+
+  /* ── Brand stamp ───────────────────────────────────────────────────────
+     Used by `components/ui/BrandStamp.tsx`, above the PeptiqStandard heading.
+
+     It is NOT a decorative eyebrow: the first element is the real Peptiq
+     wordmark — the same Baloo 2 800 lowercase lockup the header and footer
+     set — and the label after the rule names which part of the Peptiq system
+     the section is, so the line carries information the heading alone does not.
+
+     Two tones: `.brand-stamp` for the page and the lavender bands,
+     `--light` for anything dark. Nothing here is grey — the secondary text is
+     tinted from ink or paper so it belongs to the surface it sits on. */
+  .brand-stamp {
+    @apply inline-flex items-center gap-3 whitespace-nowrap;
+  }
+  .brand-stamp__dot {
+    @apply h-[7px] w-[7px] flex-none rounded-[2px] bg-brand-lime
+           ring-1 ring-inset ring-ink/15;
+  }
+  .brand-stamp__mark {
+    @apply font-display text-[1.0625rem] font-normal lowercase leading-none tracking-[-0.03em] text-ink;
+  }
+  .brand-stamp__rule {
+    @apply h-px w-7 flex-none bg-ink/20 sm:w-9;
+  }
+  .brand-stamp__label {
+    @apply text-label font-bold uppercase text-ink/60;
+  }
+
+  .brand-stamp--light .brand-stamp__dot {
+    @apply ring-paper/25;
+  }
+  .brand-stamp--light .brand-stamp__mark {
+    @apply text-paper;
+  }
+  .brand-stamp--light .brand-stamp__rule {
+    @apply bg-paper/30;
+  }
+  .brand-stamp--light .brand-stamp__label {
+    @apply text-paper/70;
   }
 
   /* Inline meta chip — a strength, a format, a count. */
@@ -394,7 +446,7 @@
   /* Lime marker for an independently verified claim. */
   .verified-mark {
     @apply inline-flex items-center gap-1.5 rounded-full bg-brand-lime px-2.5 py-1
-           text-[0.6875rem] font-bold text-ink;
+           text-label font-bold text-ink;
   }
 
   /* Ordinal for a genuine sequence — small, as a step label rather than as the
@@ -403,36 +455,31 @@
     @apply select-none font-mono text-data font-medium tabular-nums text-brand-teal;
   }
 
-  /* ── Product card: warm editorial treatment ───────────────────────────
-     A self-contained look for the product card and nothing else: cream
-     surface, letterspaced serif name, bronze accent, hairline chips, square
-     image corners.
+  /* ── Product grid ──────────────────────────────────────────────────────
+   * The one place card density is set. Every static grid of `ProductCard`s
+   * (shop, wishlist, related products, bestsellers preview) uses this, so
+   * retuning card size is one edit rather than five.
+   *
+   * Four-up from `xl`: inside the 1600px frame a three-up row stretched each
+   * card to ~475px, which dwarfed the type set on it. Four tracks bring it to
+   * ~350px — the same width the scroll rails set — so a card is the same
+   * object whatever surface you meet it on.
+   *
+   * Row gap is larger than the column gap on purpose: cards are taller than
+   * they are wide, and an equal gap reads as a tighter vertical rhythm.
+   */
+  .product-grid {
+    @apply grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
 
-     Every value lives on `.product-card` as a custom property rather than in
-     tailwind.config.ts, deliberately. These tones (cream, bronze, warm grey)
-     are NOT part of the site palette — the page is still lavender/lime/ink —
-     and promoting them to tokens would let them leak into surfaces that
-     should stay cool. Change them here, or delete this block to drop the
-     treatment entirely.
-
-     The card is a warm island on a cool page. That contrast is the point: it
-     makes the product read as the object on the shelf rather than as another
-     panel of the page. */
+  /* ── Product card ──────────────────────────────────────────────────────
+     Card-only colours live on `.product-card` as custom properties. */
   .product-card {
-    /*
-     * No surface and no outline — the card sits directly on the page and the
-     * photograph is the only object. Everything below it is bare type.
-     *
-     * The warm tones stayed, but two of them had to be darkened when the cream
-     * went: they were tuned for a #F8F6F1 card, and against the lavender page
-     * the old values failed contrast. `--pc-muted` went #8B8276 → ~3.6:1, and
-     * the bronze #A98950 → ~3.2:1 on the price. Both now clear 4.5:1 on the
-     * page wash while still reading as warm grey and bronze.
-     */
-    --pc-ink: #1c1a17; /* warm near-black */
-    --pc-muted: #6b6354; /* warm grey for meta — 5.9:1 on the page */
-    --pc-accent: #8a6d33; /* bronze — price and stars — 5.0:1 on the page */
-    --pc-rule: #cdc5b4; /* hairline for chips and boxes */
+    /* No surface and no outline — the photograph is the only object. */
+    --pc-ink: #000000;
+    --pc-muted: #444444; /* meta — 5.3:1 on the page */
+    --pc-accent: #000000; /* price and stars */
+    --pc-rule: rgba(0, 0, 0, 0.2); /* hairline for chips and boxes */
 
     color: var(--pc-ink);
   }
@@ -458,11 +505,12 @@
    * geometric and opens up badly when it is tracked out, so it wants slightly
    * negative tracking and weight instead of spacing to carry the emphasis.
    */
-  /* 16px/600 against the price's 18px/700 — the reference deliberately sets the
-     price heavier and larger than the product name, so money is the first thing
-     read on a card. Don't level them up. */
+  /* Product name on a card. Now on the `h3` token (20→26px), which is the
+     brief's 20–28px product-title band. The reference still sets its price
+     heavier than its product name so money reads first — that relationship is
+     preserved by weight (600 here vs 700 on `.pc-price`), not by size. */
   .pc-name {
-    @apply text-[1rem] font-semibold leading-tight tracking-tight;
+    @apply text-h3 font-semibold leading-tight tracking-tight;
     color: var(--pc-ink);
   }
 

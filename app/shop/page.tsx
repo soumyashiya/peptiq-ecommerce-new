@@ -46,7 +46,7 @@ export default function ShopPage() {
       />
       <div className="frame pb-section-sm md:pb-section">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-micro text-muted">
           <Link href="/" className="transition-colors hover:text-brand-teal">
             Home
           </Link>

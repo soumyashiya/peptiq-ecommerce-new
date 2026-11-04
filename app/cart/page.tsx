@@ -29,7 +29,7 @@ export default function CartPage() {
           </p>
           <Link
             href="/#products"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-brand px-9 py-4 text-[14px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-brand px-9 py-4 text-body font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
           >
             Browse the catalogue →
           </Link>
@@ -41,7 +41,7 @@ export default function CartPage() {
   return (
     <main className="pt-28 md:pt-32">
       <div className="frame pb-section-sm md:pb-section">
-        <nav className="flex items-center gap-2 text-[13px] text-muted">
+        <nav className="flex items-center gap-2 text-micro text-muted">
           <Link href="/" className="transition-colors hover:text-brand-teal">
             Home
           </Link>
@@ -50,7 +50,7 @@ export default function CartPage() {
         </nav>
         <div className="mt-6 flex items-baseline justify-between">
           <h1 className="t-h1">Your cart</h1>
-          <span className="text-[14px] text-muted">
+          <span className="text-body text-muted">
             {count} item{count === 1 ? '' : 's'}
           </span>
         </div>
@@ -79,13 +79,13 @@ export default function CartPage() {
                     <div className="min-w-0">
                       <Link
                         href={`/products/${it.slug}`}
-                        className="text-[16px] font-medium leading-snug transition-colors hover:text-brand-teal"
+                        className="text-body font-medium leading-snug transition-colors hover:text-brand-teal"
                       >
                         {it.name}
                       </Link>
-                      <p className="mt-1 text-[13px] text-muted tabular-nums">{usd(it.price)} each</p>
+                      <p className="mt-1 text-micro text-muted tabular-nums">{usd(it.price)} each</p>
                     </div>
-                    <span className="text-[16px] font-medium tabular-nums">
+                    <span className="text-body font-medium tabular-nums">
                       {usd(it.price * it.qty)}
                     </span>
                   </div>
@@ -98,7 +98,7 @@ export default function CartPage() {
                       >
                         −
                       </button>
-                      <span className="w-8 text-center text-[14px] tabular-nums">{it.qty}</span>
+                      <span className="w-8 text-center text-body tabular-nums">{it.qty}</span>
                       <button
                         onClick={() => setQty(it.slug, it.qty + 1)}
                         aria-label="Increase quantity"
@@ -109,7 +109,7 @@ export default function CartPage() {
                     </div>
                     <button
                       onClick={() => remove(it.slug)}
-                      className="text-[12px] font-medium uppercase tracking-[0.08em] text-muted transition-colors hover:text-brand"
+                      className="text-micro font-medium uppercase tracking-[0.08em] text-muted transition-colors hover:text-brand"
                     >
                       Remove
                     </button>
@@ -122,16 +122,16 @@ export default function CartPage() {
           {/* Summary */}
           <aside className="lg:col-span-5">
             <div className="rounded-[8px] border border-line bg-mist/40 p-6 md:p-8 lg:sticky lg:top-28">
-              <h2 className="text-[13px] font-medium uppercase tracking-[0.1em] text-ink">
+              <h2 className="text-micro font-medium uppercase tracking-[0.1em] text-ink">
                 Order summary
               </h2>
 
-              <div className="mt-6 space-y-2 text-[14px]">
+              <div className="mt-6 space-y-2 text-body">
                 <div className="flex justify-between">
                   <span className="text-muted">Subtotal</span>
                   <span className="tabular-nums">{usd(subtotal)}</span>
                 </div>
-                <div className="flex justify-between border-t border-line pt-3 text-[18px] font-medium">
+                <div className="flex justify-between border-t border-line pt-3 text-h3 font-medium">
                   <span>Total</span>
                   <span className="tabular-nums">{usd(total)}</span>
                 </div>
@@ -139,18 +139,18 @@ export default function CartPage() {
 
               <Link
                 href="/checkout"
-                className="mt-8 flex h-14 w-full items-center justify-center gap-3 rounded-full bg-brand text-[14px] font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
+                className="mt-8 flex h-14 w-full items-center justify-center gap-3 rounded-full bg-brand text-body font-medium uppercase tracking-[0.08em] text-paper transition-colors hover:bg-brand-teal"
               >
                 Proceed to checkout →
               </Link>
               <Link
                 href="/#products"
-                className="mt-3 flex h-11 w-full items-center justify-center text-[13px] font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
+                className="mt-3 flex h-11 w-full items-center justify-center text-micro font-medium uppercase tracking-[0.08em] text-brand-teal link-underline"
               >
                 Continue browsing
               </Link>
 
-              <div className="mt-6 space-y-2 text-[11px] leading-relaxed text-muted">
+              <div className="mt-6 space-y-2 text-label leading-relaxed text-muted">
                 <p>{compliance.checkoutAcknowledgement}</p>
                 <p>{compliance.checkoutMedical}</p>
               </div>

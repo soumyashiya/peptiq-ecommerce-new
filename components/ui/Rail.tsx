@@ -68,7 +68,7 @@ export function Rail({
       </div>
 
       <div className="mt-8 flex items-center justify-between gap-6">
-        <p className="text-[12px] font-normal uppercase tracking-[0.12em] text-muted">
+        <p className="text-micro font-normal uppercase tracking-[0.12em] text-muted">
           {footnote}
         </p>
         <div className="flex items-center gap-2">
