@@ -11,6 +11,7 @@ import { ReviewReel } from '@/components/sections/ReviewReel';
 import { Process } from '@/components/sections/Process';
 import { News } from '@/components/sections/News';
 import { Contact } from '@/components/sections/Contact';
+import { Faq } from '@/components/sections/Faq';
 import { PartnerModal } from '@/components/layout/PartnerModal';
 
 /**
@@ -51,6 +52,7 @@ export default function Home() {
       <ReviewReel />
       <Process />
       <News />
+      <Faq />
       <Contact />
       <PartnerModal />
     </main>

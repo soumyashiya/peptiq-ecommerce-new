@@ -142,7 +142,10 @@ export const story = {
   image2: '/images/about-small.webp',
 
   /* ── Editorial "About" layout (Story.tsx) ───────────────────────────────── */
-  eyebrow: 'The Peptiq standard',
+  // Every homepage section eyebrow names the brand — the page is long and the
+  // header wordmark is the only other place it appears while scrolling. Keep
+  // each one distinct: this is the About chapter, `peptiqStandard` is the next.
+  eyebrow: 'Inside Peptiq',
   /** Two-line heading; the second line is set in the purple italic accent. */
   headlineA: 'Purity, verified.',
   headlineB: 'Paperwork, included.',
@@ -192,11 +195,20 @@ export const story = {
  * grid (PeptiqStandard.tsx).
  *
  * `points` are the batch's three stages in order, each with its photo and the
- * product shown on it. The Sealed photo is the page's one shot of real Peptiq
- * packaging.
+ * product shown on it — `productSlug` has to name the compound legible on that
+ * photo, because StandardStory puts its buyable card on top of the image.
+ *
+ * All three shots are 1254×1254 squares. StandardStory frames them square on
+ * phones (no crop at all) and 5:6 from `lg`, where `object-cover` scales by
+ * height and leaves ~83% of the width showing — so `position` moves a
+ * horizontal window, not a vertical one.
+ *
+ * ⚠️ The cartons and pens carry **ALLUVI Healthcare** branding, as elsewhere on
+ * the site. An earlier note here claimed the Sealed photo was the page's one
+ * shot of real Peptiq packaging; that is no longer true of any of them.
  */
 export const peptiqStandard = {
-  label: 'How every batch ships',
+  label: 'The Peptiq standard',
   /** One entry per visual line. */
   headlineA: 'Nothing ships',
   headlineB: 'on trust.',
@@ -210,26 +222,37 @@ export const peptiqStandard = {
     {
       title: 'Assayed before listed',
       body: 'Every batch goes to Janoshik Analytical for independent purity and concentration checks before it is offered for sale.',
-      image: '/images/featured-review-lab.jpg',
-      alt: 'Researcher inspecting a sealed research pen at the laboratory bench',
-      position: '60% 30%',
-      productSlug: 'mots-c-40mg',
+      // Tesamorelin on the bench and in the carton, hence the slug.
+      image: '/new%20images/assayed.png',
+      alt: 'A researcher in safety glasses inspecting a pre-filled research pen at the laboratory bench',
+      position: '55% 50%',
+      productSlug: 'tesamorelin-20mg',
+      /** Shown on the lab photo in place of the product card. */
+      note: { label: 'Janoshik verified', text: 'Every batch assayed before it is listed.' },
     },
     {
       title: 'Sealed, fixed volume',
       body: 'Supplied in pre-filled research pens — nothing to reconstitute, measure or transfer at the bench.',
-      image: '/images/supply-still-life.jpg',
-      alt: 'Peptiq cartons stacked beside a pre-filled research pen and a lavender pouch',
-      position: '85% 40%',
-      productSlug: 'tesamorelin-20mg',
+      // Retatrutide 40mg: the carton reads "4 doses of 10 mg".
+      image: '/new%20images/sealed.png',
+      alt: 'A sealed Retatrutide carton beside its pre-filled pen and a lavender drawstring pouch',
+      position: '50% 50%',
+      productSlug: 'retatrutide-40mg',
     },
     {
       title: 'Documented on dispatch',
       body: 'The batch-specific certificate of analysis ships in the box, and its reference matches the number printed on the pen.',
-      image: '/images/about-banner.jpg',
-      alt: 'A gloved hand lifting a research pen from an open case, beside lab vials',
-      position: '42% 30%',
-      productSlug: 'retatrutide-40mg',
+      /*
+       * The whole range in a foam-lined case. Several compounds are legible, so
+       * the slug is a judgement call: BPC-157 & TB-500 is the leftmost and
+       * clearest, and it is not already used by the two points above.
+       * `78%` holds the lifted pen and the glove in the top-right corner, which
+       * a centred window clips, while leaving BPC-157 legible at the left edge.
+       */
+      image: '/new%20images/dispatch.png',
+      alt: 'A gloved hand lifting a pre-filled research pen from a foam-lined case of the range, beside lab vials',
+      position: '78% 50%',
+      productSlug: 'bpc-157-tb-500-40mg',
     },
   ],
 };
@@ -248,10 +271,17 @@ export const aboutPage = {
   },
   title: 'The standard behind Peptiq',
   quote: '"We started Peptiq because the research peptide market needed a supplier willing to be boring about the basics."',
+  /*
+   * The first photo on the page, under the title and the pull quote. Same
+   * 1254×1254 square as `peptiqStandard` stage one; the `Photo` frame is 3:2, so
+   * `object-cover` keeps ~67% of the height and the Y in `position` picks which
+   * band. Tuned to hold the researcher and the pen she is inspecting — the
+   * carton sits near the bottom edge and falls outside the crop.
+   */
   photo: {
-    image: '/images/featured-review-lab.jpg',
-    alt: 'Researcher inspecting a sealed research pen at the laboratory bench',
-    position: '60% 30%',
+    image: '/new%20images/assayed.png',
+    alt: 'A researcher in safety glasses inspecting a pre-filled research pen at the laboratory bench',
+    position: '50% 22%',
   },
   eyebrow: 'Why we started',
   heading: 'A research supplier should be able to show its paperwork.',
@@ -260,13 +290,126 @@ export const aboutPage = {
     ...story.body,
     peptiqStandard.body,
   ],
-  statement: `${story.headlineA} ${story.headlineB}`,
+  // Its own line, not the homepage About heading, so the two pages don't repeat.
+  statement: 'Every batch leaves with its paper trail.',
+  /*
+   * The photo under the closing statement. Same 1254×1254 square as
+   * `peptiqStandard` stage two; the `Photo` frame is 3:2, so `object-cover`
+   * keeps ~67% of the height and the Y in `position` picks the band. Tuned low
+   * enough to hold the pen along the bottom, which a centred window clips.
+   */
   closingPhoto: {
-    image: '/images/supply-still-life.jpg',
-    alt: 'Peptiq cartons stacked beside a pre-filled research pen and a lavender pouch',
-    position: '85% 40%',
+    image: '/new%20images/sealed.png',
+    alt: 'A sealed Retatrutide carton beside its pre-filled pen and a lavender drawstring pouch',
+    position: '50% 65%',
   },
   cta: { label: 'Shop all lines', href: '/shop' },
+};
+
+/**
+ * The homepage FAQ (Faq.tsx). Shipping and returns answers restate the policies
+ * further down this file; keep the two in step. Help goes to the enquiry form,
+ * not WhatsApp, because a WhatsApp line is not confirmed.
+ */
+export const faq = {
+  eyebrow: 'PEPTIQ FAQ',
+  title: 'Questions, answered.',
+  intro: 'Testing, delivery and returns, in plain terms. If yours is not here, the team replies within one working day.',
+  /*
+   * A CJC-1295 carton and pen on a lavender plate over lavender satin. 1374×1145,
+   * with its own page-lavender border, so Faq.tsx sets it straight on the page and
+   * it blends in. Shown at its own ratio, so nothing is cropped. Folder name
+   * contains a space, hence `%20`.
+   *
+   * ⚠️ The carton and pen carry **ALLUVI Healthcare** branding and "For
+   * subcutaneous injection only", as elsewhere on the site.
+   */
+  image: '/new%20images/faq-new.png',
+  imageAlt: 'A CJC-1295 research carton and pre-filled pen on a lavender plate',
+  imagePosition: '50% 50%',
+  topicsLabel: 'Question topics',
+  /**
+   * Social proof under the questions. The faces and the count are the review
+   * data — Faq.tsx reads them from `news`, so this cannot drift from the
+   * testimonials. Only the wording lives here; `chip` is the short form of
+   * `news.rating.count` and has to be re-stated when that figure moves.
+   */
+  trust: {
+    chip: '2.4k+',
+    lead: 'Trusted by',
+    body: 'research laboratories worldwide',
+  },
+  help: {
+    title: 'Still have a question?',
+    cta: { label: 'Contact us', href: '#contact' },
+  },
+  /** Line under the heading; the email is set in ink after it. */
+  emailLead: 'Anything not covered here —',
+  links: [
+    { label: 'Track an order', href: '/track-order' },
+    { label: 'Shipping policy', href: '/policies/shipping-policy' },
+  ],
+  topics: [
+    {
+      label: 'Testing',
+      items: [
+        {
+          q: 'Who tests each batch?',
+          a: 'Every batch goes to Janoshik Analytical for independent purity and concentration checks before it is offered for sale.',
+        },
+        {
+          q: 'Do I get the certificate of analysis?',
+          a: 'Yes. The batch-specific certificate ships in the box, and its reference matches the number printed on the pen. It is also emailed the moment your order ships.',
+        },
+        {
+          q: 'What does fixed volume mean?',
+          a: 'Each compound is supplied in a sealed, pre-filled research pen, so there is nothing to reconstitute, measure or transfer at the bench.',
+        },
+        {
+          q: 'Are these products for human use?',
+          a: `No. ${compliance.productDisclaimer}`,
+        },
+      ],
+    },
+    {
+      label: 'Shipping',
+      items: [
+        {
+          q: 'When will my order be dispatched?',
+          a: 'Orders paid before 3pm (UK time) on a working day are typically dispatched the same day. Later orders, and those placed at weekends or on public holidays, go out the next working day.',
+        },
+        {
+          q: 'How long does delivery take?',
+          a: 'UK orders usually arrive the next working day after dispatch. International orders depend on location and customs, but usually arrive within 3–10 working days.',
+        },
+        {
+          q: 'Can I track my parcel?',
+          a: 'Every shipment is tracked. Your tracking number is emailed when the parcel leaves us, and you can look up your order at any time on the Track Order page.',
+        },
+        {
+          q: 'Who pays customs duties?',
+          a: 'International buyers are responsible for any customs duties, VAT or import taxes. They are not included in product or shipping prices.',
+        },
+      ],
+    },
+    {
+      label: 'Returns',
+      items: [
+        {
+          q: 'Can I return an order?',
+          a: 'Unopened, unused items in their original seal-intact packaging can be considered for return within 7 days of delivery. Opened, used or incorrectly stored items cannot be returned.',
+        },
+        {
+          q: 'My order arrived damaged or wrong. What now?',
+          a: `Email ${brand.email} within 48 hours of delivery with your order number, a description of the issue and photographs.`,
+        },
+        {
+          q: 'How long does a refund take?',
+          a: 'Approved refunds go back to your original payment method within 5–10 business days of confirmation.',
+        },
+      ],
+    },
+  ],
 };
 
 export const stats = {
@@ -340,6 +483,7 @@ export type Product = {
   specs: { label: string; value: string }[];
   labTestUrl?: string;
   janoshik?: ProductJanoshik;
+  /** Janoshik's watermarked photos of the tested sample, shown under the lab analysis. */
   certificate?: string[];
   details?: ProductDetails;
   category: ProductCategory;
@@ -385,7 +529,7 @@ export const products: {
       blurb: '2.4 mL pre-filled research pen',
       desc: '40mg Retatrutide, pre-filled research pen. 56-day room-temp stability.',
       image: '/new%20images/products/Retatrutide%20carton%20and%20turquoise%20pen-4.png',
-      gallery: ['/new%20images/products/Retatrutide%20carton%20and%20turquoise%20pen-4.png'],
+      gallery: ['/new%20images/products/Retatrutide%20carton%20and%20turquoise%20pen-4.png', '/new%20images/new%20arrival/Retatrutide%20carton%20and%20pen%20with%20aqua%20splash-1.png'],
       longDesc:
         'A 40mg Retatrutide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Supplied in sealed format to support compound stability analysis, formulation studies, and device-mechanism evaluation.',
       specs: [
@@ -393,6 +537,20 @@ export const products: {
         { label: 'Compound', value: 'Retatrutide' },
         { label: 'Strength', value: '40mg' },
         { label: 'Storage', value: 'Refrigerated, 2–8°C' },
+      ],
+      janoshik: {
+        fillVolume: '2.4 mL',
+        batchNumber: 'AR1739JAT',
+        purity: '99.269%',
+        compounds: [
+          { name: 'Retatrutide', concentration: '18.22 mg/mL', content: '43.72 mg' },
+        ],
+      },
+      /** Janoshik's public verification page for batch AR1739JAT. */
+      labTestUrl: 'https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ',
+      certificate: [
+        '/images/products/retatrutide-40mg/janoshik/page1.jpg',
+        '/images/products/retatrutide-40mg/janoshik/page2.jpg',
       ],
       details: {
         contents: [
@@ -417,7 +575,7 @@ export const products: {
       blurb: '2.4 mL pre-filled research pen',
       desc: '20mg Retatrutide, pre-filled research pen.',
       image: '/new%20images/products/Retatrutide%2020mg%20carton%20with%20turquoise%20pen-5.png',
-      gallery: ['/new%20images/products/Retatrutide%2020mg%20carton%20with%20turquoise%20pen-5.png'],
+      gallery: ['/new%20images/products/Retatrutide%2020mg%20carton%20with%20turquoise%20pen-5.png', '/new%20images/new%20arrival/Alluvi%20Retatrutide%2020mg%20pen%20with%20turquoise%20splash-6.png'],
       longDesc:
         'A 20mg Retatrutide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Supplied in sealed format to support compound stability analysis, formulation studies, and device-mechanism evaluation.',
       specs: [
@@ -425,6 +583,22 @@ export const products: {
         { label: 'Compound', value: 'Retatrutide' },
         { label: 'Strength', value: '20mg' },
         { label: 'Storage', value: 'Refrigerated, 2–8°C' },
+      ],
+      janoshik: {
+        fillVolume: '2.4 mL',
+        batchNumber: 'AR1721TRT',
+        purity: '99.21%',
+        compounds: [
+          { name: 'Retatrutide', concentration: '9.57 mg/mL', content: '22.96 mg' },
+        ],
+      },
+      // Janoshik's public verification page for batch AR1721TRT. The test id
+      // encodes the kit, so the URL and `janoshik.batchNumber` have to be
+      // replaced together when a new batch is assayed.
+      labTestUrl: 'https://verify.janoshik.com/tests/163215-ALLUVI_RETATRUTIDE_20MG_KIT_GBHEFN58JXXZ',
+      certificate: [
+        '/images/products/retatrutide-20mg/janoshik/page1.jpg',
+        '/images/products/retatrutide-20mg/janoshik/page2.jpg',
       ],
       details: {
         contents: [
@@ -449,7 +623,7 @@ export const products: {
       blurb: '3 mL pre-filled research pen',
       desc: '40mg Tirzepatide, pre-filled research pen. Sealed for formulation studies.',
       image: '/new%20images/products/Tirzepatide%20Carton%20and%20Pen%20in%20Warm%20Light-6.png',
-      gallery: ['/new%20images/products/Tirzepatide%20Carton%20and%20Pen%20in%20Warm%20Light-6.png'],
+      gallery: ['/new%20images/products/Tirzepatide%20Carton%20and%20Pen%20in%20Warm%20Light-6.png', '/new%20images/new%20arrival/Alluvi%20Tirzepatide%20Pen%20with%20Amber%20Splash-9.png'],
       longDesc:
         'A 40mg Tirzepatide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Supplied in sealed format to support compound stability analysis, formulation studies, and device-mechanism evaluation.',
       specs: [
@@ -457,6 +631,21 @@ export const products: {
         { label: 'Compound', value: 'Tirzepatide' },
         { label: 'Strength', value: '40mg' },
         { label: 'Storage', value: 'Refrigerated, 2–8°C' },
+      ],
+      janoshik: {
+        fillVolume: '3 mL',
+        batchNumber: 'TR786PAOS',
+        purity: '99.85%',
+        compounds: [
+          { name: 'Tirzepatide', concentration: '13.35 mg/mL', content: '40.05 mg' },
+        ],
+      },
+      /** Janoshik's public verification page for batch TR786PAOS. */
+      labTestUrl: 'https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN',
+      certificate: [
+        '/images/products/tirzepatide-40mg/janoshik/page1.jpg',
+        '/images/products/tirzepatide-40mg/janoshik/page2.jpg',
+        '/images/products/tirzepatide-40mg/janoshik/page3.jpg',
       ],
       details: {
         contents: [
@@ -481,7 +670,7 @@ export const products: {
       blurb: '20mg BPC-157 + 20mg TB-500',
       desc: '20mg BPC-157 + 20mg TB-500, pre-filled research pen.',
       image: '/new%20images/products/BPC-157%20%26%20TB-500%20on%20Graphite%20Slate-1.png',
-      gallery: ['/new%20images/products/BPC-157%20%26%20TB-500%20on%20Graphite%20Slate-1.png'],
+      gallery: ['/new%20images/products/BPC-157%20%26%20TB-500%20on%20Graphite%20Slate-1.png', '/new%20images/new%20arrival/Alluvi%20BPC-157%20%26%20TB-500%20Green%20Splash-3.png'],
       longDesc:
         'A 40mg BPC-157 & TB-500 formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Supplied in sealed format to support compound stability analysis, formulation studies, and device-mechanism evaluation.',
       specs: [
@@ -489,6 +678,18 @@ export const products: {
         { label: 'Compounds', value: 'BPC-157 + TB-500' },
         { label: 'Strength', value: '20mg + 20mg' },
         { label: 'Storage', value: 'Refrigerated, 2–8°C' },
+      ],
+      janoshik: {
+        fillVolume: '3 mL',
+        batchNumber: 'BP1701FSR',
+        compounds: [
+          { name: 'BPC-157', concentration: '7.33 mg/mL', content: '21.99 mg' },
+          { name: 'TB-500', concentration: '6.53 mg/mL', content: '19.59 mg' },
+        ],
+      },
+      certificate: [
+        '/images/products/bpc-157-tb-500-40mg/janoshik/page1.jpg',
+        '/images/products/bpc-157-tb-500-40mg/janoshik/page2.jpg',
       ],
       details: {
         contents: [
@@ -514,7 +715,7 @@ export const products: {
       blurb: '2 × pre-filled research pens',
       desc: '50mg GHK-Cu + 10mg BPC-157 + 10mg TB-500, pre-filled research pens.',
       image: '/new%20images/products/GLOW%20GHK-CU%20Carton%20with%20Blue%20Pen-3.png',
-      gallery: ['/new%20images/products/GLOW%20GHK-CU%20Carton%20with%20Blue%20Pen-3.png'],
+      gallery: ['/new%20images/products/GLOW%20GHK-CU%20Carton%20with%20Blue%20Pen-3.png', '/new%20images/new%20arrival/Alluvi%20Glow%20GHK-CU%20and%20Rose%20Splash-5.png'],
       longDesc:
         'A 70mg Glow formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Supplied in sealed format to support compound stability analysis, formulation studies, and device-mechanism evaluation.',
       specs: [
@@ -522,6 +723,21 @@ export const products: {
         { label: 'Compounds', value: 'GHK-Cu + BPC-157 + TB-500' },
         { label: 'Strength', value: '50mg / 10mg / 10mg' },
         { label: 'Storage', value: 'Refrigerated, 2–8°C' },
+      ],
+      janoshik: {
+        fillVolume: '3.4 mL',
+        batchNumber: 'GL0621XSA',
+        compounds: [
+          { name: 'GHK-Cu', concentration: '7.59 mg/mL', content: '25.8 mg' },
+          { name: 'BPC-157', concentration: '2.39 mg/mL', content: '8.13 mg' },
+          { name: 'TB-500', concentration: '1.99 mg/mL', content: '6.76 mg' },
+        ],
+      },
+      /** Janoshik's public verification page for batch GL0621XSA. */
+      labTestUrl: 'https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP',
+      certificate: [
+        '/images/products/glow-70mg/janoshik/page1.jpg',
+        '/images/products/glow-70mg/janoshik/page2.jpg',
       ],
       details: {
         contents: [
@@ -547,7 +763,7 @@ export const products: {
       blurb: '1,000mg for laboratory research',
       desc: '1,000mg NAD+, ISO 9001:2015 with full batch documentation.',
       image: '/new%20images/products/NAD%2B%20Carton%20and%20Yellow%20Pen-2.png',
-      gallery: ['/new%20images/products/NAD%2B%20Carton%20and%20Yellow%20Pen-2.png'],
+      gallery: ['/new%20images/products/NAD%2B%20Carton%20and%20Yellow%20Pen-2.png', '/new%20images/new%20arrival/Alluvi%20NAD%2B%20carton%20with%20golden%20splash-8.png'],
       longDesc:
         'NAD+ (Nicotinamide Adenine Dinucleotide) research formulation for laboratory analysis and in vitro studies only. Provided exclusively for controlled laboratory R&D applications.',
       specs: [
@@ -578,7 +794,7 @@ export const products: {
       blurb: '40mg pre-filled research pen',
       desc: '40mg MOTS-C, pre-filled research pen with full batch documentation.',
       image: '/new%20images/products/MOTS-C%20Carton%20and%20Matching%20Pen-7.png',
-      gallery: ['/new%20images/products/MOTS-C%20Carton%20and%20Matching%20Pen-7.png'],
+      gallery: ['/new%20images/products/MOTS-C%20Carton%20and%20Matching%20Pen-7.png', '/new%20images/new%20arrival/Alluvi%20MOTS-C%20carton%20and%20pen%2C%20amethyst%20splash-4.png'],
       longDesc:
         'A 40mg MOTS-C (mitochondrial-derived peptide) formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications such as cellular-metabolism and in vitro studies.',
       specs: [
@@ -609,7 +825,7 @@ export const products: {
       blurb: '20mg pre-filled research pen',
       desc: '20mg Tesamorelin, pre-filled research pen with full batch documentation.',
       image: '/new%20images/products/Tesamorelin%2020mg%20carton%20and%20red%20pen-8.png',
-      gallery: ['/new%20images/products/Tesamorelin%2020mg%20carton%20and%20red%20pen-8.png'],
+      gallery: ['/new%20images/products/Tesamorelin%2020mg%20carton%20and%20red%20pen-8.png', '/new%20images/new%20arrival/Alluvi%20Tesamorelin%20Duo%2C%20Ruby%20Splash-7.png'],
       longDesc:
         'A 20mg Tesamorelin (growth-hormone-releasing hormone analogue) formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications such as receptor-binding and in vitro studies.',
       specs: [
@@ -721,8 +937,8 @@ export type ShopLine = {
  * the photo on that product's card.
  */
 export const lines: { label: string; title: string; cta: string; items: ShopLine[] } = {
-  label: 'SHOP BY LINE',
-  title: 'Every line on the bench.',
+  label: 'PEPTIQ LINES',
+  title: 'Every Peptiq line on the bench.',
   cta: 'View all',
   items: [
     {
@@ -770,7 +986,7 @@ export const lines: { label: string; title: string; cta: string; items: ShopLine
  */
 export const merch = {
   bestsellers: {
-    label: 'LOVED BY THE BENCH',
+    label: 'PEPTIQ BESTSELLERS',
     title: 'Bestsellers',
     cta: 'Shop all',
     ctaHref: '/shop?sort=bestsellers',
@@ -784,7 +1000,7 @@ export const merch = {
     ],
   },
   newArrivals: {
-    label: 'JUST LANDED',
+    label: 'NEW AT PEPTIQ',
     title: 'New arrivals',
     subtitle:
       'The latest additions to the range — new batches, new concentrations, every one independently verified.',
@@ -805,7 +1021,7 @@ export const merch = {
 export const spotlight = {
   /** Milliseconds each slide stays up before advancing. */
   interval: 6000,
-  proof: 'Independently verified batch',
+  proof: 'Independently verified Peptiq batch',
   supplyNote: 'Research Supply Programme · 3 monthly deliveries',
   footnote: 'Cold-chain dispatch · Certificate of analysis with every order',
   slides: [
@@ -883,7 +1099,7 @@ export const supply = {
   shortName: 'Supply',
   title: 'Subscribe to the Research Supply Programme.',
   /** Homepage banner copy (SupplyProgramme). */
-  bannerTitle: 'Subscribe & save on your research supply',
+  bannerTitle: 'Subscribe & save on your Peptiq supply',
   tagline: 'Because consistent research starts with a consistent supply.',
   // Still life with ALLUVI-branded cartons and pens, product on the right.
   // Product sits on the right of the frame; the folder name contains a space.
@@ -924,8 +1140,8 @@ export const supplyPricing = (price: number) => {
 /* ── Preparation process ─────────────────────────────────────────────────── */
 
 export const process = {
-  label: 'THREE DELIBERATE STEPS',
-  eyebrow: 'Three deliberate steps',
+  label: 'THE PEPTIQ PROCESS',
+  eyebrow: 'The Peptiq process',
   title: 'How each pen is prepared.',
   subtitle:
     'Three deliberate steps between the lab bench and the sealed pen — so nothing about the product is left to chance.',
@@ -1125,7 +1341,7 @@ export const featuredReview = {
 export const news = {
   index: '06',
   label: 'TESTIMONIALS',
-  title: 'The quality our research community relies on',
+  title: 'The quality Peptiq researchers rely on',
   body:
     'Verified reviews from research customers — focused on packaging quality, batch documentation, presentation, order accuracy, and support responsiveness. Every review is from a confirmed order.',
   // Aggregate trust signal shown beside the heading.
@@ -1191,8 +1407,8 @@ export const news = {
  * `meta` is their real role from that list, not an invented order date.
  */
 export const reviewReel = {
-  pill: '2,400+ verified reviews',
-  title: 'Real labs. Real batches.',
+  pill: 'Peptiq · 2,400+ verified reviews',
+  title: 'Real labs. Real Peptiq batches.',
   subtitle: 'What our research customers say about the paperwork.',
   // Clips live in public/new images/videos/ — the folder names contain spaces
   // (and some filenames brackets), so every path is URL-encoded.
@@ -1247,9 +1463,18 @@ export const contact = {
   join: 'Join',
   joinSuccess: 'You’re on the list — watch your inbox for the next batch drop.',
   direct: 'Prefer to talk to the research team?',
-  // AI-generated portrait (Magnific), background removed. No third-party branding.
-  image: '/images/contact-scientist.png',
-  imageAlt: 'Laboratory scientist holding a tablet',
+  /*
+   * Client-supplied, 1254×1254: a researcher with a tablet behind a Tirzepatide
+   * carton and pen on lavender plinths, on a lavender set with its own glow arc.
+   * Unlike the portrait it replaced it is NOT a transparent cutout, so Contact.tsx
+   * frames it whole — see the note there before changing either. The folder name
+   * contains a space, hence `%20`.
+   *
+   * ⚠️ The carton and pen carry **ALLUVI Healthcare** branding and read "For
+   * subcutaneous injection only", as elsewhere on the site.
+   */
+  image: '/new%20images/contact.png',
+  imageAlt: 'A researcher holding a tablet behind a research carton and pre-filled pen',
 };
 
 export const resources = {

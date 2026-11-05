@@ -113,6 +113,7 @@ export default function ProductPage({ params }: Params) {
           slug={product.slug}
           productName={product.name}
           janoshik={product.janoshik}
+          photos={product.certificate ?? []}
           labTestUrl={product.labTestUrl}
         />
       )}
@@ -211,97 +212,6 @@ export default function ProductPage({ params }: Params) {
                 </svg>
                 View Janoshik Analytical report
               </a>
-            )}
-
-            {/* Janoshik third-party lab analysis card */}
-            {product.janoshik && (
-              <div className="mt-8 rounded-[10px] border border-line bg-mist/60 p-5 sm:p-6">
-                <div className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-teal/10 text-brand-teal"
-                    aria-hidden
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 2v6.34a2 2 0 0 1-.34 1.11L4.2 16.1A2 2 0 0 0 5.87 19h12.26a2 2 0 0 0 1.67-2.9l-4.46-6.65A2 2 0 0 1 15 8.34V2" />
-                      <path d="M7 2h10" />
-                      <path d="M7.5 13h9" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h2 className="text-body font-medium text-ink">
-                      Janoshik Third-Party Lab Analysis
-                    </h2>
-                    <p className="mt-1 text-micro text-muted">
-                      Independently tested and verified by Janoshik Analytical.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Batch meta */}
-                <dl className="mt-5 grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-3">
-                  <div className="bg-paper px-4 py-3">
-                    <dt className="text-label uppercase tracking-[0.1em] text-muted">
-                      Batch number
-                    </dt>
-                    <dd className="mt-1 text-body font-medium text-ink">
-                      {product.janoshik.batchNumber}
-                    </dd>
-                  </div>
-                  <div className="bg-paper px-4 py-3">
-                    <dt className="text-label uppercase tracking-[0.1em] text-muted">
-                      Fill volume
-                    </dt>
-                    <dd className="mt-1 text-body font-medium text-ink">
-                      {product.janoshik.fillVolume}
-                    </dd>
-                  </div>
-                  {product.janoshik.purity && (
-                    <div className="bg-paper px-4 py-3">
-                      <dt className="text-label uppercase tracking-[0.1em] text-muted">
-                        Purity
-                      </dt>
-                      <dd className="mt-1 text-body font-medium text-brand-teal">
-                        {product.janoshik.purity}
-                      </dd>
-                    </div>
-                  )}
-                </dl>
-
-                {/* Compounds table */}
-                <div className="mt-5 overflow-hidden rounded-[6px] border border-line">
-                  <table className="w-full text-left text-micro">
-                    <thead className="bg-mist text-label uppercase tracking-[0.1em] text-muted">
-                      <tr>
-                        <th className="px-3 py-2.5 font-medium">Compound</th>
-                        <th className="px-3 py-2.5 font-medium">Concentration</th>
-                        <th className="px-3 py-2.5 font-medium">Verified content</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-line">
-                      {product.janoshik.compounds.map((c) => (
-                        <tr key={c.name} className="bg-paper">
-                          <td className="px-3 py-2.5 font-medium text-ink">{c.name}</td>
-                          <td className="px-3 py-2.5 text-muted">{c.concentration}</td>
-                          <td className="px-3 py-2.5 font-medium text-brand-teal">{c.content}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="mt-3 text-label leading-relaxed text-muted">
-                  Concentration is measured per mL; verified content reflects the total assayed
-                  mass across the stated fill volume.
-                </p>
-              </div>
             )}
 
             {/* Package detail tabs */}

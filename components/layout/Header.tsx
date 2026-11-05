@@ -121,7 +121,8 @@ export function Header() {
         {/* ── Centre: the shared wordmark (see Wordmark.tsx) ── */}
         <Link
           href={isHome ? '#top' : '/'}
-          className={`shrink-0 transition-colors ${onHero ? 'text-paper' : 'text-ink'}`}
+          // On the hero photo a soft shadow keeps the wordmark legible over faces and hair.
+          className={`shrink-0 transition-colors ${onHero ? 'text-paper [text-shadow:0_1px_14px_rgba(0,0,0,0.35)]' : 'text-ink'}`}
           aria-label={brand.name}
         >
           <Wordmark />

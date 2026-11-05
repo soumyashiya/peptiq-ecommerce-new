@@ -81,12 +81,12 @@ export function Bestsellers() {
               {visible.map((product) => (
                 <div
                   key={product.slug}
-                  className="w-[70vw] shrink-0 snap-start sm:w-[36vw] lg:w-[19vw]"
+                  className="w-[70vw] shrink-0 snap-start sm:w-[36vw] lg:w-[min(21.5vw,22.25rem)]"
                 >
                   <ProductCard
                     variant="minimal"
                     product={product}
-                    sizes="(min-width: 1024px) 19vw, (min-width: 640px) 36vw, 70vw"
+                    sizes="(min-width: 1024px) 21.5vw, (min-width: 640px) 36vw, 70vw"
                   />
                 </div>
               ))}
@@ -101,13 +101,21 @@ export function Bestsellers() {
              *
              * Four-up from `lg` rather than `xl`: these are the pared-back
              * `minimal` cards, which hold at the width the expanded rail gives
-             * them at that breakpoint (19vw), and taking the fourth track a
-             * breakpoint later would leave one card stranded on its own row.
+             * them at that breakpoint, and taking the fourth track a breakpoint
+             * later would leave one card stranded on its own row. The column gap
+             * is tighter than the shared grid's so the four cards run a little
+             * larger; the rail's 21.5vw (capped where the frame stops growing)
+             * matches them, so opening "Shop all" doesn't resize them.
              */
             <>
-              <div className="product-grid lg:grid-cols-4">
+              <div className="product-grid lg:grid-cols-4 lg:gap-x-4">
                 {visible.map((product) => (
-                  <ProductCard key={product.slug} variant="minimal" product={product} />
+                  <ProductCard
+                    key={product.slug}
+                    variant="minimal"
+                    product={product}
+                    sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw"
+                  />
                 ))}
               </div>
               <p className="mt-8 text-micro font-normal uppercase tracking-[0.12em] text-muted">

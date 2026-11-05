@@ -21,7 +21,10 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // WebP only. AVIF was first, and the optimiser took ~8s to encode each new image
+    // and width into it (measured on a 2MB product PNG; WebP: ~1s), so every first view
+    // of a page sat on blank image boxes. AVIF's ~30% smaller files don't pay for that.
+    formats: ['image/webp'],
     // Trim the default device-width matrix to the sizes we actually render.
     deviceSizes: [360, 430, 640, 768, 1024, 1280, 1440, 1920],
     remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],

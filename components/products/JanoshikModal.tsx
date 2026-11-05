@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { ProductJanoshik } from '@/lib/content';
+import { JanoshikPhotos } from './JanoshikPhotos';
 
 /**
  * Auto-opening modal that surfaces the batch's Janoshik third-party lab
@@ -13,11 +14,13 @@ export function JanoshikModal({
   slug,
   productName,
   janoshik,
+  photos,
   labTestUrl,
 }: {
   slug: string;
   productName: string;
   janoshik: ProductJanoshik;
+  photos: string[];
   labTestUrl?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -184,6 +187,7 @@ export function JanoshikModal({
             Concentration is measured per mL; verified content reflects the total assayed
             mass across the stated fill volume.
           </p>
+          <JanoshikPhotos images={photos} productName={productName} />
         </div>
 
         {/* Footer CTA */}

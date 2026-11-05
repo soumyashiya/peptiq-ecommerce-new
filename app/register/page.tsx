@@ -10,7 +10,7 @@ import { brand } from '@/lib/content';
 
 /* ── shared field styling ── */
 const inputBase =
-  'h-[46px] w-full rounded-[11px] border border-line bg-paper pl-11 pr-4 text-body text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-brand-sky focus:ring-4 focus:ring-brand-sky/12';
+  'h-[46px] w-full rounded-[11px] border border-line bg-paper pl-11 pr-4 text-body text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-[#462E6A] focus:ring-4 focus:ring-brand-soft/60';
 const labelClass = 'mb-1.5 block text-micro font-medium text-ink';
 
 const COUNTRIES = [
@@ -160,17 +160,17 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-brand-sky via-brand to-brand-teal px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
       {/* soft ambient glows */}
-      <span aria-hidden className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-paper/15 blur-[130px]" />
-      <span aria-hidden className="pointer-events-none absolute -bottom-40 -right-32 h-[28rem] w-[28rem] rounded-full bg-brand-sky/40 blur-[150px]" />
+      <span aria-hidden className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-paper/40 blur-[130px]" />
+      <span aria-hidden className="pointer-events-none absolute -bottom-40 -right-32 h-[28rem] w-[28rem] rounded-full bg-brand-lime/20 blur-[150px]" />
 
       <div className="relative mx-auto w-full max-w-[1120px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="grid w-full grid-cols-1 overflow-hidden rounded-[28px] bg-paper shadow-[0_40px_100px_-40px_rgba(0,0,0,0.4)] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)]"
+          className="grid w-full grid-cols-1 overflow-hidden rounded-[28px] bg-paper shadow-[0_40px_100px_-40px_rgba(70,46,106,0.5)] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)]"
         >
           {/* ── Left: light brand panel ── */}
           <aside className="relative hidden flex-col justify-between overflow-hidden bg-mist p-8 lg:flex xl:p-10">
@@ -190,12 +190,12 @@ export default function RegisterPage() {
             />
             {/* legibility overlays */}
             <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-paper/40 via-transparent to-paper/90" />
-            <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-brand-sky/15 via-transparent to-transparent" />
+            <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#462E6A]/15 via-transparent to-transparent" />
 
             {/* brand lockup */}
             <div className="relative z-10">
               <Link href="/" className="flex items-center gap-2.5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-gradient-to-br from-brand-sky to-brand text-paper shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)]">
+                <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#462E6A] text-paper shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)]">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                     <circle cx="12" cy="3" r="1.7" fill="currentColor" />
@@ -245,7 +245,7 @@ export default function RegisterPage() {
           <section className="flex flex-col px-6 py-6 sm:px-9 sm:py-7 md:px-10 md:py-8 lg:px-10 lg:py-8 xl:px-12 xl:py-9">
             {/* mobile-only brand strip */}
             <div className="mb-6 flex items-center gap-2.5 lg:hidden">
-              <span className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-gradient-to-br from-brand-sky to-brand text-paper">
+              <span className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-[#462E6A] text-paper">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path d="M12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                 </svg>
@@ -256,7 +256,7 @@ export default function RegisterPage() {
             {/* header row */}
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h1 className="font-serif text-h2-sm font-medium tracking-tight text-ink sm:text-h2-sm">
+                <h1 className="t-h2-sm text-ink">
                   Create account
                 </h1>
                 <p className="mt-2 text-body text-muted">
@@ -408,7 +408,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group mt-1 flex h-[50px] w-full items-center justify-center gap-2.5 rounded-[12px] bg-brand text-body font-semibold text-paper shadow-[0_16px_36px_-14px_rgba(0,0,0,0.5)] transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
+                className="group mt-1 flex h-[50px] w-full items-center justify-center gap-2.5 rounded-[12px] bg-brand-lime text-body font-semibold uppercase tracking-[0.06em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper disabled:opacity-60"
               >
                 {submitting ? 'Creating account…' : 'Create research account'}
                 {!submitting && (

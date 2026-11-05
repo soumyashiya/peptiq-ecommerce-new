@@ -50,6 +50,7 @@ export function StandardExplorer({ children }: { children: ReactNode }) {
   const [active, setActive] = useState(0);
   const point = peptiqStandard.points[active];
   const product = getProduct(point.productSlug);
+  const note = 'note' in point ? point.note : undefined;
 
   return (
     <div className="grid gap-y-8 lg:grid-cols-[0.85fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8">
@@ -66,22 +67,39 @@ export function StandardExplorer({ children }: { children: ReactNode }) {
               exit={reduce ? undefined : { opacity: 0 }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              {/* `object-cover` scales this crop by height, so it renders wider than its box. */}
+              {/*
+                The shots are square. The phone frame is square too, so nothing
+                is cropped and the image renders at the box width; from `lg` the
+                frame is 5:6 and `object-cover` scales by height, rendering 20%
+                wider than the box (measured 680px against a 567px box at
+                1440). `sizes` follows that, not the box.
+              */}
               <Image
                 src={point.image}
                 alt={point.alt}
                 fill
-                sizes="(min-width: 1024px) 90vw, 170vw"
+                sizes="(min-width: 1024px) 50vw, 90vw"
                 style={{ objectPosition: point.position }}
                 className="object-cover"
               />
             </motion.div>
           </AnimatePresence>
         </div>
-        {product && (
-          <div className="mt-3 lg:absolute lg:inset-x-5 lg:bottom-5 lg:mt-0">
-            <ShopCard product={product} />
+        {/* The lab shot carries the verification note, hung off the photo's corner like the
+            About stat cards; the others carry their product. */}
+        {note ? (
+          <div className="relative z-10 -mt-5 ml-4 max-w-[19rem] lg:absolute lg:-bottom-10 lg:-left-6 lg:m-0">
+            <div className="rounded-[14px] bg-paper/95 px-6 py-5 shadow-[0_18px_40px_rgba(70,46,106,0.18)]">
+              <p className="text-label font-bold uppercase tracking-[0.18em] text-ink/55">{note.label}</p>
+              <p className="mt-2 text-lead font-semibold leading-snug text-ink">{note.text}</p>
+            </div>
           </div>
+        ) : (
+          product && (
+            <div className="mt-3 lg:absolute lg:inset-x-5 lg:bottom-5 lg:mt-0">
+              <ShopCard product={product} />
+            </div>
+          )
         )}
       </div>
 

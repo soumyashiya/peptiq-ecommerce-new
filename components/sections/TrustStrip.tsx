@@ -1,14 +1,18 @@
-import { trustStrip } from '@/lib/content';
+import { brand, trustStrip } from '@/lib/content';
 
 /**
- * Trust strip — the first thing under the hero: four assurance badges, and
- * nothing else.
+ * Trust strip — the first thing under the hero: a brand chip, then four
+ * assurance badges.
  *
- * It previously opened with a brand stamp and a line of context above the row.
- * Both were removed deliberately — directly under the hero the badges carry
- * themselves, and a heading there pushed the first product further down the
- * page for no gain. The section still has an accessible name via `aria-label`,
- * so dropping the visible heading costs nothing to a screen reader.
+ * It previously opened with a brand stamp and a line of context *above* the
+ * row. Both were removed deliberately — directly under the hero the badges
+ * carry themselves, and a heading there pushed the first product further down
+ * the page for no gain. The brand is back, but as the row's first chip rather
+ * than as a heading, so the section names itself at no cost in height. The
+ * context line stayed cut.
+ *
+ * The chip is lime on ink, the only inverted pill in the row, so it reads as
+ * the mark the other four belong to instead of a fifth claim.
  *
  * Each badge's longer description is kept as its `title` tooltip; the list is
  * `role="list"` content and the icons are decorative.
@@ -24,7 +28,14 @@ export function TrustStrip() {
   return (
     <section aria-label="What every Peptiq order carries" className="py-section-sm">
       <div className="frame">
-        <ul className="flex flex-wrap justify-center gap-2.5 lg:gap-3">
+        <ul className="flex flex-wrap items-center justify-center gap-2.5 lg:gap-3">
+          <li className="flex items-center rounded-full bg-ink py-2 pl-4 pr-4">
+            <span className="mr-2 h-1.5 w-1.5 rounded-full bg-brand-lime" aria-hidden />
+            <span className="font-display text-[0.9375rem] font-extrabold uppercase leading-none tracking-[0.12em] text-paper">
+              {brand.name}
+            </span>
+          </li>
+
           {trustStrip.items.map((item) => (
             <li
               key={item.label}

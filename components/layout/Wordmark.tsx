@@ -24,8 +24,8 @@ export function Wordmark({
   size?: 'sm' | 'md';
   className?: string;
 }) {
-  const name = size === 'sm' ? 'text-[1.0625rem] md:text-[1.125rem]' : 'text-[1.375rem] md:text-[1.5rem]';
-  const sub = size === 'sm' ? 'text-[0.5rem]' : 'text-[0.5rem] md:text-[0.5625rem]';
+  const name = size === 'sm' ? 'text-[1.125rem] md:text-[1.25rem]' : 'text-[1.5rem] md:text-[1.75rem]';
+  const sub = size === 'sm' ? 'text-[0.5625rem]' : 'text-[0.5625rem] md:text-[0.625rem]';
 
   return (
     <span
@@ -33,10 +33,10 @@ export function Wordmark({
         align === 'center' ? 'items-center' : 'items-start'
       } ${className}`}
     >
-      <span className={`pl-[0.3em] font-medium uppercase tracking-[0.3em] ${name}`}>
+      <span className={`pl-[0.28em] font-bold uppercase tracking-[0.28em] ${name}`}>
         {brand.name}
       </span>
-      <span className={`mt-1.5 pl-[0.38em] font-semibold uppercase tracking-[0.38em] opacity-70 ${sub}`}>
+      <span className={`mt-1.5 pl-[0.38em] font-bold uppercase tracking-[0.38em] opacity-80 ${sub}`}>
         {brand.sub}
       </span>
     </span>

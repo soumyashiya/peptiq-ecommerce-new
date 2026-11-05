@@ -46,7 +46,12 @@ function Tile({ line }: { line: (typeof lines.items)[number] }) {
     // bold uppercase name and one small grey line, centred underneath.
     <Link
       href={line.href}
-      className="group/tile mr-6 flex w-[70vw] shrink-0 flex-col items-center text-center sm:w-[36vw] lg:w-[19vw]"
+      // Width tracks the Bestsellers rail exactly — same three steps, same
+      // `min()` cap. The cap matters more here: that rail is inside `.frame`,
+      // which stops at 1600px, while this one is full-bleed, so without it the
+      // tiles kept growing with the viewport and outsized the product cards on
+      // a wide monitor.
+      className="group/tile mr-6 flex w-[70vw] shrink-0 flex-col items-center text-center sm:w-[36vw] lg:w-[min(21.5vw,22.25rem)]"
     >
       <div
         className="relative aspect-[4/5] w-full overflow-hidden rounded-[10px]"
@@ -57,7 +62,7 @@ function Tile({ line }: { line: (typeof lines.items)[number] }) {
             src={line.image}
             alt=""
             fill
-            sizes="(min-width: 1024px) 19vw, (min-width: 640px) 36vw, 70vw"
+            sizes="(min-width: 1024px) 21.5vw, (min-width: 640px) 36vw, 70vw"
             className="object-cover transition-transform duration-700 ease-smooth group-hover/tile:scale-[1.04]"
           />
         )}

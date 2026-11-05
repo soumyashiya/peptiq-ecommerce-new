@@ -40,10 +40,10 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen">
       <div className="grid min-h-screen lg:grid-cols-2">
         {/* ── Brand panel (hidden on mobile) ── */}
-        <aside className="relative hidden overflow-hidden bg-gradient-to-br from-brand-sky via-brand to-brand-teal p-10 text-paper lg:flex lg:flex-col xl:p-14">
+        <aside className="relative hidden overflow-hidden bg-[#462E6A] p-10 text-paper lg:flex lg:flex-col xl:p-14">
           {/* research/lab background image */}
           <span
             aria-hidden
@@ -55,7 +55,7 @@ export default function LoginPage() {
           {/* darken/tint overlay for legibility */}
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-sky/60 via-brand/50 to-brand-teal/60"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#462E6A]/30 via-[#462E6A]/55 to-[#462E6A]/90"
           />
 
           {/* soft glows */}
@@ -65,7 +65,7 @@ export default function LoginPage() {
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-brand-sky/40 blur-[120px]"
+            className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-brand-lime/20 blur-[120px]"
           />
 
           {/* logo */}
@@ -134,12 +134,12 @@ export default function LoginPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full max-w-[420px]"
+            className="w-full max-w-[560px] rounded-[18px] bg-paper p-7 shadow-[0_24px_60px_-28px_rgba(70,46,106,0.45)] sm:p-9"
           >
             {/* mobile-only brand + back link */}
             <div className="flex items-center justify-between lg:hidden">
               <Link href="/" className="flex items-center gap-2 text-ink">
-                <span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-brand-sky to-brand text-paper">
+                <span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-[#462E6A] text-paper">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5Z"
@@ -205,7 +205,7 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@lab.com"
-                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-4 text-body text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
+                    className="h-12 w-full rounded-[10px] border border-line bg-paper pl-12 pr-4 text-body text-ink outline-none transition-all duration-200 focus:border-[#462E6A] focus:bg-paper focus:ring-4 focus:ring-brand-soft/60"
                   />
                 </div>
               </label>
@@ -235,7 +235,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="h-12 w-full rounded-[10px] border border-line bg-mist/40 pl-12 pr-16 text-body text-ink outline-none transition-all duration-200 focus:border-brand-sky focus:bg-paper focus:ring-4 focus:ring-brand-sky/10"
+                    className="h-12 w-full rounded-[10px] border border-line bg-paper pl-12 pr-16 text-body text-ink outline-none transition-all duration-200 focus:border-[#462E6A] focus:bg-paper focus:ring-4 focus:ring-brand-soft/60"
                   />
                   <button
                     type="button"
@@ -261,7 +261,7 @@ export default function LoginPage() {
                   type="checkbox"
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
-                  className="h-4 w-4 rounded border-line text-brand-sky focus:ring-2 focus:ring-brand-sky/20"
+                  className="h-4 w-4 rounded border-line accent-[#462E6A] focus:ring-2 focus:ring-brand-soft/60"
                 />
                 Keep me signed in on this device
               </label>
@@ -280,7 +280,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand text-body font-medium text-paper transition-all duration-200 hover:bg-brand-teal disabled:opacity-60"
+                className="group mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-lime text-body font-semibold uppercase tracking-[0.06em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper disabled:opacity-60"
               >
                 {submitting ? 'Signing in…' : 'Sign in'}
                 {!submitting && (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import Image from 'next/image';
 import { useReducedMotion } from 'framer-motion';
 import { reviewReel } from '@/lib/content';
@@ -26,6 +26,24 @@ import { Reveal } from '@/components/ui/Reveal';
 
 type Item = (typeof reviewReel.items)[number];
 
+/**
+ * True while the element is on screen or within a card's width of it. The four
+ * clips are ~33MB together and the row renders each card twice, so previews that
+ * all autoplayed on load downloaded every clip with the page; now a card only
+ * streams its clip while it can be seen, and drops it again when it scrolls away.
+ */
+function useNearViewport(ref: RefObject<HTMLElement>) {
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setNear(entry.isIntersecting), { rootMargin: '200px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [ref]);
+  return near;
+}
+
 function Card({
   item,
   isPlaying,
@@ -41,8 +59,11 @@ function Card({
   onPlay: () => void;
   onEnd: () => void;
 }) {
+  const ref = useRef<HTMLLIElement>(null);
+  const near = useNearViewport(ref);
+
   return (
-    <li className="relative mr-5 aspect-[9/16] w-[56vw] flex-none overflow-hidden rounded-[1.25rem] bg-ink/10 sm:w-[33vw] lg:w-[16vw]">
+    <li ref={ref} className="relative mr-5 aspect-[9/16] w-[56vw] flex-none overflow-hidden rounded-[1.25rem] bg-ink/10 sm:w-[33vw] lg:w-[16vw]">
       {isPlaying && item.video ? (
         <video
           src={item.video}
@@ -55,24 +76,25 @@ function Card({
         />
       ) : (
         <>
-          {item.video ? (
+          {/* The poster is always there; the silent preview only mounts while the card
+              is on or near the screen, so the clips don't download with the page. */}
+          <Image
+            src={item.poster}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 56vw"
+            className="object-cover"
+          />
+          {item.video && near && !reduce && (
             <video
               src={item.video}
               muted
               loop
               playsInline
-              autoPlay={!reduce}
-              preload="metadata"
+              autoPlay
+              preload="none"
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"
-            />
-          ) : (
-            <Image
-              src={item.poster}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 56vw"
-              className="object-cover"
             />
           )}
 

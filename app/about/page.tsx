@@ -25,7 +25,9 @@ function Photo({ photo }: { photo: { image: string; alt: string; position: strin
         fill
         sizes="(min-width: 700px) 40rem, 100vw"
         style={{ objectPosition: photo.position }}
-        className="object-cover"
+        // The source shots carry a pale strip down each side edge; a slight zoom
+        // crops it off so the photo meets the rounded frame on both sides.
+        className="scale-[1.06] object-cover"
       />
     </Reveal>
   );
