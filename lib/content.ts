@@ -52,9 +52,9 @@ export const partnerModal = {
   tags: ['Genuine Alluvi batches', 'Janoshik verified'],
   shopCta: { label: 'Shop the range', href: '/shop' },
   verifyCta: { label: 'Verify a batch', href: '#process' },
-  image: '/images/partner-modal.jpg',
-  imageAlt: 'A BPC-157 and TB-500 carton and pen from Alluvi Healthcare on dark slate',
-  imagePosition: '30% 50%',
+  image: '/new%20images/modal.png',
+  imageAlt: 'A model in lavender holding an Alluvi Healthcare NAD+ 1,000 mg pen kit',
+  imagePosition: '50% 25%',
 };
 
 export const nav = {
@@ -1465,15 +1465,15 @@ export const contact = {
   direct: 'Prefer to talk to the research team?',
   /*
    * Client-supplied, 1254×1254: a researcher with a tablet behind a Tirzepatide
-   * carton and pen on lavender plinths, on a lavender set with its own glow arc.
-   * Unlike the portrait it replaced it is NOT a transparent cutout, so Contact.tsx
-   * frames it whole — see the note there before changing either. The folder name
-   * contains a space, hence `%20`.
+   * carton and pen on lavender plinths. This is the background-removed cut-out —
+   * `contact.png` next to it is the same shot with its lavender set still in, and
+   * would need framing rather than the glow Contact.tsx puts behind this one. The
+   * folder name contains a space, hence `%20`.
    *
    * ⚠️ The carton and pen carry **ALLUVI Healthcare** branding and read "For
    * subcutaneous injection only", as elsewhere on the site.
    */
-  image: '/new%20images/contact.png',
+  image: '/new%20images/contact-new.png',
   imageAlt: 'A researcher holding a tablet behind a research carton and pre-filled pen',
 };
 

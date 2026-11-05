@@ -103,7 +103,12 @@ export function PartnerModal() {
               />
             </div>
 
-            <div className="p-6 sm:p-8 lg:p-10">
+            <div className="relative p-6 sm:p-8 lg:p-10">
+              {/* Centre divider — horizontal above the copy when stacked, vertical beside it from md. */}
+              <span
+                aria-hidden
+                className="absolute inset-x-6 top-0 h-px bg-paper/20 sm:inset-x-8 md:inset-x-auto md:bottom-10 md:left-0 md:top-10 md:h-auto md:w-px"
+              />
               <p className="text-label font-bold uppercase text-brand-lime">{partnerModal.eyebrow}</p>
               <p className="mt-4 font-display text-[2rem] leading-none text-paper">{partnerModal.logo}</p>
               <p className="mt-1 text-label font-bold uppercase text-paper/80">{partnerModal.logoSub}</p>

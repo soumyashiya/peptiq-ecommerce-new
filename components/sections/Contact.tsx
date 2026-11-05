@@ -113,19 +113,24 @@ export function Contact() {
           </Reveal>
 
           {/*
-            Shown whole in a rounded square, not cut out against the page. The
-            photo is square and carries its own lavender set and glow arc, so the
-            CSS radial-glow that used to sit behind the old background-removed
-            portrait would double up with it. Swap this back to `object-contain`
-            over that glow only if the asset returns to a transparent cutout.
+            Cut out against the page, over a CSS glow. The asset is a
+            transparent PNG with no background of its own, so it is set
+            `object-contain` and bottom-aligned to stand on the section floor
+            rather than being framed. If a shot with its own background is used
+            here again, drop the glow and frame it instead — two glows stack
+            badly.
           */}
-          <div className="relative mx-auto aspect-square w-full max-w-[27rem] self-end overflow-hidden rounded-[18px]">
+          <div className="relative w-full self-end" style={{ height: 'clamp(22rem, 32vw, 27rem)' }}>
+            <span
+              aria-hidden
+              className="absolute inset-x-[10%] bottom-0 top-[18%] rounded-t-full bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.4)_0%,rgba(210,191,252,0.2)_50%,rgba(210,191,252,0)_75%)]"
+            />
             <Image
               src={contact.image}
               alt={contact.imageAlt}
               fill
-              sizes="(min-width: 768px) 27rem, 90vw"
-              className="object-cover"
+              sizes="(min-width: 768px) 45vw, 90vw"
+              className="object-contain object-bottom"
             />
           </div>
         </div>

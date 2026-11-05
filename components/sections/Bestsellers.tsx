@@ -8,10 +8,12 @@ import { ProductCard } from '@/components/products/ProductCard';
 /**
  * Cards shown in the collapsed grid before "Shop all" expands the rail.
  *
- * Four, not three, because `.product-grid` is four-up from `xl` — three cards
- * left a quarter of the row empty next to the "Shop all" button.
+ * Three, matching the three-up preview row. It was four while the row was
+ * four-up; the row was widened to three so the cards themselves could grow,
+ * and this has to track the column count or the last card strands on a row of
+ * its own.
  */
-const PREVIEW_COUNT = 4;
+const PREVIEW_COUNT = 3;
 
 /**
  * Bestsellers. Carries the `#products` anchor that the nav points at, since it
@@ -81,12 +83,12 @@ export function Bestsellers() {
               {visible.map((product) => (
                 <div
                   key={product.slug}
-                  className="w-[70vw] shrink-0 snap-start sm:w-[36vw] lg:w-[min(21.5vw,22.25rem)]"
+                  className="w-[76vw] shrink-0 snap-start sm:w-[44vw] lg:w-[min(28.9vw,29.6rem)]"
                 >
                   <ProductCard
                     variant="minimal"
                     product={product}
-                    sizes="(min-width: 1024px) 21.5vw, (min-width: 640px) 36vw, 70vw"
+                    sizes="(min-width: 1024px) 28.9vw, (min-width: 640px) 44vw, 76vw"
                   />
                 </div>
               ))}
@@ -108,13 +110,16 @@ export function Bestsellers() {
              * matches them, so opening "Shop all" doesn't resize them.
              */
             <>
-              <div className="product-grid lg:grid-cols-4 lg:gap-x-4">
+              {/* Three-up all the way from `lg`, overriding `.product-grid`'s
+                  four-up at `xl`. A grid card's width is set by the column
+                  count, so dropping a column is what makes these cards larger. */}
+              <div className="product-grid xl:grid-cols-3">
                 {visible.map((product) => (
                   <ProductCard
                     key={product.slug}
                     variant="minimal"
                     product={product}
-                    sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw"
+                    sizes="(min-width: 1024px) 29vw, (min-width: 640px) 46vw, 92vw"
                   />
                 ))}
               </div>
